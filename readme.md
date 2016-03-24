@@ -1,6 +1,6 @@
 # HapiJS Authentication Sample
 
-This repo goes along with Auth0's tutorial on [HapiJS authentication](https://auth0.com/blog/2016-03-07-hapijs-authentication-secure-your-api-with-json-web-tokens). It shows how to implement user creation, authentication, and access control with Hapi and MongoDB.
+This repo goes along with Auth0's tutorial on [HapiJS authentication](https://auth0.com/blog/2016/03/07/hapijs-authentication-secure-your-api-with-json-web-tokens/). It shows how to implement user creation, authentication, and access control with Hapi and MongoDB.
 
 ## Installation and Running the App
 
