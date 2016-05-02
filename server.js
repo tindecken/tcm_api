@@ -11,7 +11,7 @@ const server = new Hapi.Server();
 
 // The connection object takes some
 // configuration, including the port
-server.connection({ port: 3000 });
+server.connection({ port: 3000, routes: { cors: true } });
 
 const dbUrl = 'mongodb://localhost:27017/hapi-app';
 
