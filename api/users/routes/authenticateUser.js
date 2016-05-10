@@ -10,6 +10,7 @@ module.exports = {
   method: 'POST',
   path: '/api/users/authenticate',
   config: {
+    auth: false,
     // Check the user's password against the DB
     pre: [
       { method: verifyCredentials, assign: 'user' }
