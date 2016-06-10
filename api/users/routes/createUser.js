@@ -21,10 +21,9 @@ module.exports = {
   path: '/api/users',
   config: {
     auth: false,
-    // Before the route handler runs, verify that
-    // the user is unique and assign the result to 'user'
+    // Before the route handler runs, verify that the user is unique
     pre: [
-      { method: verifyUniqueUser, assign: 'user' }
+      { method: verifyUniqueUser }
     ],
     handler: (req, res) => {
 
