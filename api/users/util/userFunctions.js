@@ -2,14 +2,14 @@
 
 const Boom = require('boom');
 const User = require('../model/User');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 function verifyUniqueUser(req, res) {
   // Find an entry from the database that
   // matches either the email or username
-  User.findOne({ 
-    $or: [ 
-      { email: req.payload.email }, 
+  User.findOne({
+    $or: [
+      { email: req.payload.email },
       { username: req.payload.username }
     ]
   }, (err, user) => {
@@ -32,13 +32,13 @@ function verifyUniqueUser(req, res) {
 }
 
 function verifyCredentials(req, res) {
-  
+
   const password = req.payload.password;
-  
+
   // Find an entry from the database that
   // matches either the email or username
-  User.findOne({ 
-    $or: [ 
+  User.findOne({
+    $or: [
       { email: req.payload.email },
       { username: req.payload.username }
     ]
