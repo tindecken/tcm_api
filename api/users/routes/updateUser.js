@@ -9,21 +9,18 @@ module.exports = {
   method: 'PATCH',
   path: '/api/users/{id}',
   config: {
-    pre: [
-      { method: verifyUniqueUser, assign: 'user' }
-    ],
+    pre: [{ method: verifyUniqueUser, assign: 'user' }],
     handler: (req, res) => {
       const id = req.params.id;
-      User
-        .findOneAndUpdate({ _id: id }, req.pre.user, (err, user) => {
-          if (err) {
-            throw Boom.badRequest(err);
-          }
-          if (!user) {
-            throw Boom.notFound('User not found!');
-          }
-          res({message: 'User updated!'});
-        });      
+      User.findOneAndUpdate({ _id: id }, req.pre.user, (err, user) => {
+        if (err) {
+          throw Boom.badRequest(err);
+        }
+        if (!user) {
+          throw Boom.notFound('User not found!');
+        }
+        res({ message: 'User updated!' });
+      });
     },
     validate: {
       payload: updateUserSchema.payloadSchema,
@@ -34,5 +31,4 @@ module.exports = {
       scope: ['admin']
     }
   }
-  
-}
+};

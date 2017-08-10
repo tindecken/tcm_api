@@ -22,11 +22,8 @@ module.exports = {
   config: {
     auth: false,
     // Before the route handler runs, verify that the user is unique
-    pre: [
-      { method: verifyUniqueUser }
-    ],
+    pre: [{ method: verifyUniqueUser }],
     handler: (req, res) => {
-
       let user = new User();
       user.email = req.payload.email;
       user.username = req.payload.username;
@@ -44,11 +41,10 @@ module.exports = {
           res({ id_token: createToken(user) }).code(201);
         });
       });
-
     },
     // Validate the payload against the Joi schema
     validate: {
       payload: createUserSchema
     }
   }
-}
+};

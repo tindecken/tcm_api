@@ -8,8 +8,7 @@ module.exports = {
   path: '/api/users',
   config: {
     handler: (req, res) => {
-      User
-        .find()
+      User.find()
         // Deselect the password and version fields
         .select('-password -__v')
         .exec((err, users) => {
@@ -20,7 +19,7 @@ module.exports = {
             throw Boom.notFound('No users found!');
           }
           res(users);
-        })
+        });
     },
     // Add authentication to this route
     // The user must have a scope of `admin`
@@ -29,4 +28,4 @@ module.exports = {
       scope: ['admin']
     }
   }
-}
+};

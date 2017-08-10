@@ -11,9 +11,7 @@ module.exports = {
   path: '/api/users/check',
   config: {
     auth: false,
-    pre: [
-      { method: verifyUniqueUser, assign: 'user' }
-    ],
+    pre: [{ method: verifyUniqueUser, assign: 'user' }],
     handler: (req, res) => {
       res(req.pre.user);
     },
@@ -22,4 +20,4 @@ module.exports = {
       payload: checkUserSchema
     }
   }
-}
+};

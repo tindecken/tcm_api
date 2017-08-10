@@ -12,9 +12,7 @@ module.exports = {
   config: {
     auth: false,
     // Check the user's password against the DB
-    pre: [
-      { method: verifyCredentials, assign: 'user' }
-    ],
+    pre: [{ method: verifyCredentials, assign: 'user' }],
     handler: (req, res) => {
       // If the user's password is correct, we can issue a token.
       // If it was incorrect, the error will bubble up from the pre method
@@ -23,5 +21,5 @@ module.exports = {
     validate: {
       payload: authenticateUserSchema
     }
-  }  
-}
+  }
+};
