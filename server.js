@@ -2,26 +2,50 @@
 
 const Hapi = require('hapi');
 const Boom = require('boom');
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 const glob = require('glob');
 const path = require('path');
 const secret = require('./config');
 
-const server = new Hapi.Server();
 
-// The connection object takes some
-// configuration, including the port
-server.connection({ port: 3000, routes: { cors: true } });
+const init = async () => {
 
-const dbUrl = 'mongodb://localhost:27017/hapi-app';
-
-server.register(require('hapi-auth-jwt'), err => {
-  // We are giving the strategy a name of 'jwt'
-  server.auth.strategy('jwt', 'jwt', 'required', {
-    key: secret,
-    verifyOptions: { algorithms: ['HS256'] }
+  const server = new Hapi.Server({
+    port: 3000, 
+    routes: { cors: true }
   });
 
+  const people = { // our "users database"
+    1: {
+      id: 1,
+      name: 'Jen Jones'
+    }
+  };
+
+  // bring your own validation function
+  const validate = async function (decoded, request) {
+
+      // do your checks to see if the person is valid
+      if (!people[decoded.id]) {
+        return { isValid: false };
+      }
+      else {
+        return { isValid: true };
+      }
+  };
+
+  await server.register(require('hapi-auth-jwt2'))
+
+  server.auth.strategy('jwt', 'jwt', {
+    key: 'secret',
+    validate: validate,
+    verifyOptions: {
+      algorithms: ['HS226']
+    }
+  })
+
+  server.auth.default('jwt')
+  
   // Look through the routes in
   // all the subdirectories of API
   // and create a new route for each
@@ -33,17 +57,27 @@ server.register(require('hapi-auth-jwt'), err => {
       const route = require(path.join(__dirname, file));
       server.route(route);
     });
+
+  await server.start();
+  return server;
+};
+
+process.on('unhandledRejection', (err) => {
+
+  console.log(err);
+  process.exit(1);
 });
 
-// Start the server
-server.start(err => {
-  if (err) {
-    throw err;
-  }
-  // Once started, connect to Mongo through Mongoose
-  mongoose.connect(dbUrl, {}, err => {
-    if (err) {
-      throw err;
-    }
+init().then(server => {
+  console.log('Server running at:', server.info.uri);
+  const dbUrl = 'mongodb://localhost/hapi-app';
+  mongoose.connect(dbUrl, {useNewUrlParser: true});
+  var db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function() {
+    console.log('OK')
   });
+})
+.catch(error => {
+  console.log('Error while init server', error);
 });

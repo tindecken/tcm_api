@@ -22,7 +22,11 @@ module.exports = {
   config: {
     auth: false,
     // Before the route handler runs, verify that the user is unique
-    pre: [{ method: verifyUniqueUser }],
+    pre: [{ method: verifyUniqueUser, assign: 'user' }],
+    // Validate the payload against the Joi schema
+    validate: {
+      payload: createUserSchema
+    },
     handler: (req, res) => {
       let user = new User();
       user.email = req.payload.email;
@@ -38,13 +42,9 @@ module.exports = {
             throw Boom.badRequest(err);
           }
           // If the user is saved successfully, issue a JWT
-          res({ id_token: createToken(user) }).code(201);
         });
       });
+      return res.response({ id_token: createToken(user) }).code(201);
     },
-    // Validate the payload against the Joi schema
-    validate: {
-      payload: createUserSchema
-    }
   }
 };
