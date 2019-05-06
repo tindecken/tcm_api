@@ -6,7 +6,34 @@ var mongoose = require('mongoose');
 const glob = require('glob');
 const path = require('path');
 const secret = require('./config');
+const hapiAuthJWT = require('./api/lib/');
 
+const people = {
+  1: {
+    id: 1,
+    name: 'Anthony Valid User'
+  }
+};
+
+console.log('secret:', secret)
+
+// bring your own validation function
+const validate = async function (decoded, request, h) {
+  console.log(" - - - - - - - decoded token:");
+  console.log(decoded);
+  console.log(" - - - - - - - request info:");
+  console.log(request.info);
+  console.log(" - - - - - - - user agent:");
+  console.log(request.headers['user-agent']);
+
+  // do your checks to see if the person is valid
+  if (!people[decoded.id]) {
+    return { isValid: false };
+  }
+  else {
+    return { isValid : true };
+  }
+};
 
 const init = async () => {
 
@@ -15,36 +42,18 @@ const init = async () => {
     routes: { cors: true }
   });
 
-  const people = { // our "users database"
-    1: {
-      id: 1,
-      name: 'Jen Jones'
-    }
-  };
-
-  // bring your own validation function
-  const validate = async function (decoded, request) {
-
-      // do your checks to see if the person is valid
-      if (!people[decoded.id]) {
-        return { isValid: false };
-      }
-      else {
-        return { isValid: true };
-      }
-  };
-
-  await server.register(require('hapi-auth-jwt2'))
+  await server.register(hapiAuthJWT)
 
   server.auth.strategy('jwt', 'jwt', {
-    key: 'secret',
+    key: secret,
     validate: validate,
     verifyOptions: {
+      ignoreExpiration: true,
       algorithms: ['HS226']
     }
   })
 
-  server.auth.default('jwt')
+  server.auth.default('jwt');
   
   // Look through the routes in
   // all the subdirectories of API

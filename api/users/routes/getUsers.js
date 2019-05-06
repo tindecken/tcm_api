@@ -6,8 +6,10 @@ const Boom = require('boom');
 module.exports = {
   method: 'GET',
   path: '/api/users',
-  config: {
+  config: { 
+    auth: 'jwt', 
     handler: (req, res) => {
+      console.log('RRRRRRRRRRRR')
       User.find()
         // Deselect the password and version fields
         .select('-password -__v')
@@ -21,11 +23,6 @@ module.exports = {
           res(users);
         });
     },
-    // Add authentication to this route
-    // The user must have a scope of `admin`
-    auth: {
-      strategy: 'jwt',
-      scope: ['admin']
-    }
-  }
+  },
+  
 };

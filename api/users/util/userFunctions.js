@@ -44,7 +44,8 @@ async function verifyCredentials(req, h) {
   }
   const valid = await bcrypt.compare(password, user.password)
   if(!valid) throw Boom.badRequest('Invalid password')
-  return req.payload;
+  req.payload.user = user
+  return req.payload.user;
 }
 
 module.exports = {

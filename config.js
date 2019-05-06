@@ -1,3 +1,3 @@
-const key = 'secretkey';
+const key = 'rivaldo';
 
 module.exports = key;
