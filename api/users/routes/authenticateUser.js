@@ -19,6 +19,7 @@ module.exports = {
     handler: (req, res) => {
       // If the user's password is correct, we can issue a token.
       // If it was incorrect, the error will bubble up from the pre method
+      console.log('req.pre.user', req.pre.user)
       return res.response({ id_token: createToken(req.pre.user) }).code(201);
     }
   }

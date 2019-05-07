@@ -3,19 +3,13 @@
 const Hapi = require('hapi');
 const Boom = require('boom');
 var mongoose = require('mongoose');
+const JWT = require('jsonwebtoken');
+const hapiAuthJWT = require('./api/lib/');
 const glob = require('glob');
 const path = require('path');
 const secret = require('./config');
-const hapiAuthJWT = require('./api/lib/');
 
-const people = {
-  1: {
-    id: 1,
-    name: 'Anthony Valid User'
-  }
-};
 
-console.log('secret:', secret)
 
 // bring your own validation function
 const validate = async function (decoded, request, h) {
@@ -25,7 +19,7 @@ const validate = async function (decoded, request, h) {
   console.log(request.info);
   console.log(" - - - - - - - user agent:");
   console.log(request.headers['user-agent']);
-
+  return { isValid : true };
   // do your checks to see if the person is valid
   if (!people[decoded.id]) {
     return { isValid: false };
@@ -44,14 +38,11 @@ const init = async () => {
 
   await server.register(hapiAuthJWT)
 
-  server.auth.strategy('jwt', 'jwt', {
-    key: secret,
-    validate: validate,
-    verifyOptions: {
-      ignoreExpiration: true,
-      algorithms: ['HS226']
-    }
-  })
+  server.auth.strategy('jwt', 'jwt',
+  { key: 'rivaldo',          // Never Share your secret key
+    validate: validate,            // validate function defined above
+    // verifyOptions: { algorithms: [ 'HS256' ] } // pick a strong algorithm
+  });
 
   server.auth.default('jwt');
   
@@ -72,7 +63,6 @@ const init = async () => {
 };
 
 process.on('unhandledRejection', (err) => {
-
   console.log(err);
   process.exit(1);
 });

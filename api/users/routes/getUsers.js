@@ -4,25 +4,21 @@ const User = require('../model/User');
 const Boom = require('boom');
 
 module.exports = {
-  method: 'GET',
-  path: '/api/users',
-  config: { 
-    auth: 'jwt', 
+    method: 'GET', path: '/api/users', config: { auth: 'jwt' },
     handler: (req, res) => {
-      console.log('RRRRRRRRRRRR')
-      User.find()
+      return User.find()
         // Deselect the password and version fields
         .select('-password -__v')
-        .exec((err, users) => {
-          if (err) {
-            throw Boom.badRequest(err);
-          }
-          if (!users.length) {
+        .exec()
+        .then(users => {
+          if(!users.length) {
             throw Boom.notFound('No users found!');
           }
-          res(users);
-        });
+          return res.response(users)
+        })
+        .catch(err => {
+          throw Boom.badRequest(err);
+        })
     },
-  },
-  
+
 };
