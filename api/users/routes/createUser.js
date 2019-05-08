@@ -6,6 +6,7 @@ const User = require('../model/User');
 const createUserSchema = require('../schemas/createUser');
 const verifyUniqueUser = require('../util/userFunctions').verifyUniqueUser;
 const createToken = require('../util/token');
+const Joi = require('joi');
 
 function hashPassword(password, cb) {
   // Generate a salt at level 10 strength
@@ -27,6 +28,16 @@ module.exports = {
     validate: {
       payload: createUserSchema
     },
+    description: 'Create new user',
+    notes: 'This will create an non-admin user, return user\'s token',
+    tags: ['api', 'users'], // ADD THIS TAG
+    // validate: {
+    //     params: {
+    //         id : Joi.number()
+    //                 .required()
+    //                 .description('the id for the todo item'),
+    //     }
+    // },
     handler: (req, res) => {
       let user = new User();
       user.email = req.payload.email;

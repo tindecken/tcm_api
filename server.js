@@ -3,12 +3,14 @@
 const Hapi = require('hapi');
 const Boom = require('boom');
 var mongoose = require('mongoose');
-const JWT = require('jsonwebtoken');
 const hapiAuthJWT = require('./api/lib/');
 const glob = require('glob');
 const path = require('path');
 const secret = require('./config');
-
+const Inert = require('inert');
+const Vision = require('vision');
+const HapiSwagger = require('hapi-swagger');
+const Pack = require('./package');
 
 
 // bring your own validation function
@@ -30,7 +32,22 @@ const init = async () => {
     routes: { cors: true }
   });
 
-  await server.register(hapiAuthJWT)
+  const swaggerOptions = {
+    info: {
+        title: 'APIs for Automation TestCase Management',
+        version: Pack.version,
+      },
+    };
+  
+  await server.register([
+    Inert,
+    Vision,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions
+    },
+    hapiAuthJWT
+  ]);
 
   server.auth.strategy('jwt', 'jwt',
   { key: secret,          // Never Share your secret key
@@ -63,7 +80,7 @@ process.on('unhandledRejection', (err) => {
 
 init().then(server => {
   console.log('Server running at:', server.info.uri);
-  const dbUrl = 'mongodb://localhost/hapi-app';
+  const dbUrl = 'mongodb://localhost/hapi-app'; 
   mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true });
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
