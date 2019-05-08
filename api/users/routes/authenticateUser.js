@@ -1,7 +1,7 @@
 'use strict';
 
 const Boom = require('boom');
-const User = require('../model/User');
+const User = require('../../models/User');
 const authenticateUserSchema = require('../schemas/authenticateUser');
 const verifyCredentials = require('../util/userFunctions').verifyCredentials;
 const createToken = require('../util/token');
@@ -16,6 +16,9 @@ module.exports = {
     validate: {
       payload: authenticateUserSchema
     },
+    description: 'Login',
+    notes: 'Return user\s token',
+    tags: ['api', 'users'],
     handler: (req, res) => {
       // If the user's password is correct, we can issue a token.
       // If it was incorrect, the error will bubble up from the pre method

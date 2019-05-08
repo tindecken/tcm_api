@@ -2,7 +2,7 @@
 
 const bcrypt = require('bcryptjs');
 const Boom = require('boom');
-const User = require('../model/User');
+const User = require('../../models/User');
 const createUserSchema = require('../schemas/createUser');
 const verifyUniqueUser = require('../util/userFunctions').verifyUniqueUser;
 const createToken = require('../util/token');
@@ -30,14 +30,7 @@ module.exports = {
     },
     description: 'Create new user',
     notes: 'This will create an non-admin user, return user\'s token',
-    tags: ['api', 'users'], // ADD THIS TAG
-    // validate: {
-    //     params: {
-    //         id : Joi.number()
-    //                 .required()
-    //                 .description('the id for the todo item'),
-    //     }
-    // },
+    tags: ['api', 'users'],
     handler: (req, res) => {
       let user = new User();
       user.email = req.payload.email;
@@ -52,9 +45,9 @@ module.exports = {
           if (err) {
             throw Boom.badRequest(err);
           }
-          // If the user is saved successfully, issue a JWT
         });
       });
+      // If the user is saved successfully, issue a JWT
       return res.response({ id_token: createToken(user) }).code(201);
     },
   }

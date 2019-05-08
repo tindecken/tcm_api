@@ -1,7 +1,7 @@
 'use strict';
 
 const Boom = require('boom');
-const User = require('../model/User');
+const User = require('../../models/User');
 const updateUserSchema = require('../schemas/updateUser');
 const verifyUniqueUser = require('../util/userFunctions').verifyUniqueUser;
 
