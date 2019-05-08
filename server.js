@@ -19,14 +19,8 @@ const validate = async function (decoded, request, h) {
   console.log(request.info);
   console.log(" - - - - - - - user agent:");
   console.log(request.headers['user-agent']);
-  return { isValid : true };
-  // do your checks to see if the person is valid
-  if (!people[decoded.id]) {
-    return { isValid: false };
-  }
-  else {
-    return { isValid : true };
-  }
+  if(decoded.id) return { isValid : true };
+  else return { isValid : false };
 };
 
 const init = async () => {
@@ -39,9 +33,9 @@ const init = async () => {
   await server.register(hapiAuthJWT)
 
   server.auth.strategy('jwt', 'jwt',
-  { key: 'rivaldo',          // Never Share your secret key
+  { key: secret,          // Never Share your secret key
     validate: validate,            // validate function defined above
-    // verifyOptions: { algorithms: [ 'HS256' ] } // pick a strong algorithm
+    verifyOptions: { algorithms: [ 'HS256' ] } // pick a strong algorithm
   });
 
   server.auth.default('jwt');
@@ -70,11 +64,11 @@ process.on('unhandledRejection', (err) => {
 init().then(server => {
   console.log('Server running at:', server.info.uri);
   const dbUrl = 'mongodb://localhost/hapi-app';
-  mongoose.connect(dbUrl, {useNewUrlParser: true});
+  mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true });
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function() {
-    console.log('OK')
+    console.log('Connected to MongoDB')
   });
 })
 .catch(error => {

@@ -48,7 +48,13 @@ async function verifyCredentials(req, h) {
   return req.payload.user;
 }
 
+async function verifyAdminUser(req, h) {
+  if(req.auth.credentials.scope !== 'admin') throw Boom.forbidden('Required admin users')
+  return req.auth.credentials
+}
+
 module.exports = {
   verifyUniqueUser: verifyUniqueUser,
-  verifyCredentials: verifyCredentials
+  verifyCredentials: verifyCredentials,
+  verifyAdminUser: verifyAdminUser
 };

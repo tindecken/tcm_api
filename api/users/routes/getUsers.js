@@ -2,9 +2,13 @@
 
 const User = require('../model/User');
 const Boom = require('boom');
+const verifyAdminUser = require('../util/userFunctions').verifyAdminUser;
 
 module.exports = {
-    method: 'GET', path: '/api/users', config: { auth: 'jwt' },
+    method: 'GET', path: '/api/users', config: { 
+      auth: 'jwt',
+      pre: [{ method: verifyAdminUser, assign: 'user' }],
+    },
     handler: (req, res) => {
       return User.find()
         // Deselect the password and version fields
