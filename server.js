@@ -15,12 +15,12 @@ const Pack = require('./package');
 
 // bring your own validation function
 const validate = async function (decoded, request, h) {
-  console.log(" - - - - - - - decoded token:");
-  console.log(decoded);
-  console.log(" - - - - - - - request info:");
-  console.log(request.info);
-  console.log(" - - - - - - - user agent:");
-  console.log(request.headers['user-agent']);
+  // console.log(" - - - - - - - decoded token:");
+  // console.log(decoded);
+  // console.log(" - - - - - - - request info:");
+  // console.log(request.info);
+  // console.log(" - - - - - - - user agent:");
+  // console.log(request.headers['user-agent']);
   if(decoded.id) return { isValid : true };
   else return { isValid : false };
 };
@@ -62,7 +62,7 @@ const init = async () => {
   // all the subdirectories of API
   // and create a new route for each
   glob
-    .sync('api/**/routes/*.js', {
+    .sync('api/**/routes/**/*.js', {
       root: __dirname
     })
     .forEach(file => {
@@ -75,7 +75,6 @@ const init = async () => {
 };
 
 process.on('unhandledRejection', (err) => {
-  console.log(err);
   process.exit(1);
 });
 

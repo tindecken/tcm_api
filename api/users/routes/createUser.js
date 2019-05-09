@@ -7,6 +7,7 @@ const createUserSchema = require('../schemas/createUser');
 const verifyUniqueUser = require('../util/userFunctions').verifyUniqueUser;
 const createToken = require('../util/token');
 const Joi = require('joi');
+var mongoose = require('mongoose');
 
 function hashPassword(password, cb) {
   // Generate a salt at level 10 strength
@@ -33,6 +34,7 @@ module.exports = {
     tags: ['api', 'users'],
     handler: (req, res) => {
       let user = new User();
+      user._id = new mongoose.Types.ObjectId(),
       user.email = req.payload.email;
       user.username = req.payload.username;
       user.admin = false;
