@@ -27,7 +27,6 @@ module.exports = {
       payload: createTestSuiteSchema,
       failAction: (request, h, err) => {
         throw err;
-        return;
       }
     },
     description: 'Create new testsuite',
