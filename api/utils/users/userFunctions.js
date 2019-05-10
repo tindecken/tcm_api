@@ -53,8 +53,14 @@ async function verifyAdminUser(req, h) {
   return req.auth.credentials
 }
 
+function getUserID(req,h) {
+  if(!req.auth.credentials.id) throw Boom.forbidden('Required authen')
+  return req.auth.credentials.id
+}
+
 module.exports = {
   verifyUniqueUser: verifyUniqueUser,
   verifyCredentials: verifyCredentials,
-  verifyAdminUser: verifyAdminUser
+  verifyAdminUser: verifyAdminUser,
+  getUserID: getUserID
 };

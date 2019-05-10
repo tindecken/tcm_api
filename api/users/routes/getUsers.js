@@ -3,7 +3,7 @@
 const User = require('../../models/User');
 const Boom = require('boom');
 const Joi = require('joi');
-const verifyAdminUser = require('../util/userFunctions').verifyAdminUser;
+const verifyAdminUser = require('../../utils/users/userFunctions').verifyAdminUser;
 
 module.exports = {
     method: 'GET', path: '/api/users', config: { 

@@ -5,8 +5,8 @@ const Boom = require('boom');
 const TestSuite = require('../../models/TestSuite');
 const User = require('../../models/User')
 const createTestSuiteSchema = require('../schemas/createTestSuite');
-const verifyUniqueTestSuite = require('../util/testSuiteFunctions').verifyUniqueTestSuite;
-const getUserID = require('../util/testSuiteFunctions').getUserID;
+const verifyUniqueTestSuite = require('../../utils/testsuites/testsuiteFunctions').verifyUniqueTestSuite;
+const getUserID = require('../../utils/users/userFunctions').getUserID;
 const Joi = require('joi');
 var mongoose = require('mongoose');
 
@@ -15,7 +15,7 @@ module.exports = {
   path: '/api/testsuites',
   config: {
     auth: 'jwt',
-    pre: [{ method: verifyUniqueTestSuite, assign: 'testSuite' }, { method: getUserID, assign: 'user'}],
+    pre: [{ method: verifyUniqueTestSuite, assign: 'testsuite' }, { method: getUserID, assign: 'testsuite'}],
     // Validate the payload against the Joi schema
     validate: {
       payload: createTestSuiteSchema
@@ -24,13 +24,12 @@ module.exports = {
     notes: 'This will create new test suite',
     tags: ['api', 'testsuites'],
     handler: (req, res) => {
-      console.log('req.headers.authorization', req.headers.authorization)
       let testSuite = new TestSuite();
       testSuite._id = new mongoose.Types.ObjectId(),
       testSuite.name = req.payload.name;
       testSuite.description = req.payload.description
-      testSuite.owner = 'abc'
-      testSuite.save((err, testsuite) => {
+      testSuite.owner = req.pre.testsuite
+      testSuite.save((err, testSuite) => {
         if (err) {
           throw Boom.badRequest(err);
         }

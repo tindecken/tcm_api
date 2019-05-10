@@ -3,7 +3,7 @@
 const Boom = require('boom');
 const User = require('../../models/User');
 const updateUserSchema = require('../schemas/updateUser');
-const verifyUniqueUser = require('../util/userFunctions').verifyUniqueUser;
+const verifyUniqueUser = require('../../utils/users/userFunctions').verifyUniqueUser;
 
 module.exports = {
   method: 'PATCH',

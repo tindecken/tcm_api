@@ -23,12 +23,6 @@ function verifyUniqueTestSuite(req, h) {
   })
 }
 
-function getUserID(req,h) {
-  
-}
-
-
 module.exports = {
   verifyUniqueTestSuite: verifyUniqueTestSuite,
-  getUserID: getUserID
 };

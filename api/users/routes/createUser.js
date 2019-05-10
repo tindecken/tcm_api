@@ -4,8 +4,8 @@ const bcrypt = require('bcryptjs');
 const Boom = require('boom');
 const User = require('../../models/User');
 const createUserSchema = require('../schemas/createUser');
-const verifyUniqueUser = require('../util/userFunctions').verifyUniqueUser;
-const createToken = require('../util/token');
+const verifyUniqueUser = require('../../utils/users/userFunctions').verifyUniqueUser;
+const createToken = require('../../utils/users/token');
 const Joi = require('joi');
 var mongoose = require('mongoose');
 
