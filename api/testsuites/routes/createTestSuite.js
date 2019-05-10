@@ -18,18 +18,30 @@ module.exports = {
     pre: [{ method: verifyUniqueTestSuite, assign: 'testsuite' }, { method: getUserID, assign: 'testsuite'}],
     // Validate the payload against the Joi schema
     validate: {
-      payload: createTestSuiteSchema
+      options: {
+        abortEarly: false
+      },
+      headers: Joi.object({
+          'authorization': Joi.string().required()
+      }).unknown(),
+      payload: createTestSuiteSchema,
+      failAction: (request, h, err) => {
+        throw err;
+        return;
+      }
     },
     description: 'Create new testsuite',
     notes: 'This will create new test suite',
     tags: ['api', 'testsuites'],
     handler: (req, res) => {
       let testSuite = new TestSuite();
-      testSuite._id = new mongoose.Types.ObjectId(),
-      testSuite.name = req.payload.name;
+      testSuite._id = new mongoose.Types.ObjectId()
+      testSuite.name = req.payload.name
       testSuite.description = req.payload.description
+      if(req.payload.workID) testSuite.workID = req.payload.workID
+      else testSuite.workID = ''
       testSuite.owner = req.pre.testsuite
-      testSuite.save((err, testSuite) => {
+      testSuite.save((err, testsuite) => {
         if (err) {
           throw Boom.badRequest(err);
         }
