@@ -81,7 +81,7 @@ process.on('unhandledRejection', (err) => {
 init().then(server => {
   console.log('Server running at:', server.info.uri);
   const dbUrl = 'mongodb://localhost/hapi-app'; 
-  mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true });
+  mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function() {

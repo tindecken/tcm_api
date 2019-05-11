@@ -45,6 +45,12 @@ module.exports = {
         if (err) {
           throw Boom.badRequest(err);
         }
+        User.findOneAndUpdate({ _id: req.pre.testsuite}, { $push: { testsuites: testSuite._id }})
+          .exec()
+          .then()
+          .catch(err => {
+            throw Boom.internal(err)
+          })
       });
       return res.response({ testSuite }).code(201);
     },
