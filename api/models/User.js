@@ -12,7 +12,7 @@ const userModel = new Schema({
   testsuites: [{ type: Schema.Types.ObjectId, ref: 'TestSuite' }],
   categories: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
   builds: [{ type: Schema.Types.ObjectId, ref: 'Build' }],
-  createdAt: { type: Date, default: Date.now},
+  createdAt: { type: Date },
   updatedAt: { type: Date }
 });
 

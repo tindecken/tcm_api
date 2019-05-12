@@ -19,7 +19,7 @@ const testCaseModel = new Schema({
   dependencies: [{type: Schema.Types.ObjectId, ref: 'TestCase'}],
   steps: [{type: Schema.Types.ObjectId, ref: 'Step'}],
   key: {type: Boolean, default: false},
-  createdAt: { type: Date, default: Date.now},
+  createdAt: { type: Date },
   updatedAt: { type: Date }
 });
 

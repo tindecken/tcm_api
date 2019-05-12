@@ -15,7 +15,7 @@ const enrionmentModel = new Schema({
     description: { type: String }
   }],
   testsuites: { type: Schema.Types.ObjectId, ref: 'TestSuite'},
-  createdAt: { type: Date, default: Date.now},
+  createdAt: { type: Date },
   updatedAt: { type: Date }
 
 });

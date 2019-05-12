@@ -12,7 +12,7 @@ const clientModel = new Schema({
   type: { type: String, maxlength: 50, required: true},
   value: { type: String, maxlength: 255},
   keywords:[{type: Schema.Types.ObjectId, ref: 'Keyword'}],
-  createdAt: { type: Date, default: Date.now},
+  createdAt: { type: Date },
   updatedAt: { type: Date }
 });
 

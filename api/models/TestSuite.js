@@ -18,9 +18,8 @@ const testSuiteModel = new Schema({
   testCases: [{ type: Schema.Types.ObjectId, ref: 'TestCase' }],
   environment: { type: Schema.Types.ObjectId, ref: 'Environment'},
   builds: [{ type: Schema.Types.ObjectId, ref: 'Build' }],
-  createdAt: { type: Date, default: Date.now},
+  createdAt: { type: Date },
   updatedAt: { type: Date }
-
 });
 
 testSuiteModel.virtual('codeName').get(function () {

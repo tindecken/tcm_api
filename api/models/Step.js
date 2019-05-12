@@ -15,8 +15,8 @@ const stepModel = new Schema({
   testcase:  { type: Schema.Types.ObjectId, ref: 'TestCase' },
   keyword: {type: Schema.Types.ObjectId, ref: 'Keyword'},
   client: {type: Schema.Types.ObjectId, ref: 'Client'},
-  log: {type: Schema.Types.ObjectId, ref: 'Log'},
-  createdAt: { type: Date, default: Date.now},
+  stepLog: {type: Schema.Types.ObjectId, ref: 'StepLog'},
+  createdAt: { type: Date },
   updatedAt: { type: Date }
 });
 
