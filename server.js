@@ -34,11 +34,11 @@ const init = async () => {
 
   const swaggerOptions = {
     info: {
-        // title: 'APIs for Automation TestCase Management',
-        title: 'Test',
-        version: Pack.version,
-      },
-    };
+      // title: 'APIs for Automation TestCase Management',
+      title: 'Test',
+      version: Pack.version,
+    },
+  }
   
   await server.register([
     Inert,

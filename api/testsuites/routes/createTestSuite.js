@@ -4,11 +4,14 @@ const bcrypt = require('bcryptjs');
 const Boom = require('boom');
 const TestSuite = require('../../models/TestSuite');
 const User = require('../../models/User')
+const Category = require('../../models/Category')
 const createTestSuiteSchema = require('../schemas/createTestSuite');
 const verifyUniqueTestSuite = require('../../utils/testsuites/testsuiteFunctions').verifyUniqueTestSuite;
 const getUserID = require('../../utils/users/userFunctions').getUserID;
 const Joi = require('joi');
 var mongoose = require('mongoose');
+Joi.objectId = require('joi-objectid')(Joi);
+
 
 module.exports = {
   method: 'POST',
@@ -40,14 +43,29 @@ module.exports = {
       if(req.payload.workID) testSuite.workID = req.payload.workID
       else testSuite.workID = ''
       testSuite.owner = req.pre.testsuite
-      testSuite.save((err, testsuite) => {
+      testSuite.category = req.payload.categoryId
+      testSuite.createdAt = Date.now()
+      testSuite.save(async(err, testsuite) => {
         if (err) {
           throw Boom.badRequest(err);
         }
-        User.findOneAndUpdate({ _id: req.pre.testsuite}, { $push: { testsuites: testSuite._id }})
+        await User.findOneAndUpdate({ _id: req.pre.testsuite}, { $push: { testsuites: testSuite._id }})
           .exec()
-          .then()
+          .then(user => {
+            if(!user) throw Boom.badRequest('Not found user in the system')
+          })
           .catch(err => {
+            throw Boom.internal(err)
+          })
+        console.log('AAAAAAAAAAAAAAAAAA')
+        await Category.findOneAndUpdate({ _id: req.payload.categoryId}, { $push: { testsuites: testSuite._id }})
+          .exec()
+          .then(category => {
+            console.log('category', category)
+            if(!category) throw Boom.badRequest('Not found category in the system')
+          })
+          .catch(err => {
+            console.log(err)
             throw Boom.internal(err)
           })
       });
