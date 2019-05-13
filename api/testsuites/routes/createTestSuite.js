@@ -10,7 +10,7 @@ const verifyUniqueTestSuite = require('../../utils/testsuites/testsuiteFunctions
 const getUserID = require('../../utils/users/userFunctions').getUserID;
 const Joi = require('joi');
 var mongoose = require('mongoose');
-Joi.objectId = require('joi-objectid')(Joi);
+
 
 
 module.exports = {
@@ -35,7 +35,7 @@ module.exports = {
     description: 'Create new testsuite',
     notes: 'This will create new test suite',
     tags: ['api', 'testsuites'],
-    handler: (req, res) => {
+    handler: async (req, res) => {
       let testSuite = new TestSuite();
       testSuite._id = new mongoose.Types.ObjectId()
       testSuite.name = req.payload.name
@@ -45,10 +45,12 @@ module.exports = {
       testSuite.owner = req.pre.testsuite
       testSuite.category = req.payload.categoryId
       testSuite.createdAt = Date.now()
-      testSuite.save(async(err, testsuite) => {
-        if (err) {
-          throw Boom.badRequest(err);
-        }
+      try {
+        await testSuite.save(async(err, testsuite) => {
+          if (err) {
+            throw Boom.badRequest(err);
+          }
+        });
         await User.findOneAndUpdate({ _id: req.pre.testsuite}, { $push: { testsuites: testSuite._id }})
           .exec()
           .then(user => {
@@ -57,7 +59,6 @@ module.exports = {
           .catch(err => {
             throw Boom.internal(err)
           })
-        console.log('AAAAAAAAAAAAAAAAAA')
         await Category.findOneAndUpdate({ _id: req.payload.categoryId}, { $push: { testsuites: testSuite._id }})
           .exec()
           .then(category => {
@@ -65,10 +66,13 @@ module.exports = {
             if(!category) throw Boom.badRequest('Not found category in the system')
           })
           .catch(err => {
-            console.log(err)
             throw Boom.internal(err)
           })
-      });
+        console.log('ABC')
+      } catch (error) {
+        console.log('ERROR', error)
+        throw Boom.boomify(error)
+      }
       return res.response({ testSuite }).code(201);
     },
   }
