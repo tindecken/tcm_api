@@ -45,35 +45,16 @@ module.exports = {
       testSuite.owner = req.pre.testsuite
       testSuite.category = req.payload.categoryId
       testSuite.createdAt = Date.now()
-      try {
-        await testSuite.save(async(err, testsuite) => {
-          if (err) {
-            throw Boom.badRequest(err);
-          }
-        });
-        await User.findOneAndUpdate({ _id: req.pre.testsuite}, { $push: { testsuites: testSuite._id }})
-          .exec()
-          .then(user => {
-            if(!user) throw Boom.badRequest('Not found user in the system')
-          })
-          .catch(err => {
-            throw Boom.internal(err)
-          })
-        await Category.findOneAndUpdate({ _id: req.payload.categoryId}, { $push: { testsuites: testSuite._id }})
-          .exec()
-          .then(category => {
-            console.log('category', category)
-            if(!category) throw Boom.badRequest('Not found category in the system')
-          })
-          .catch(err => {
-            throw Boom.internal(err)
-          })
-        console.log('ABC')
-      } catch (error) {
-        console.log('ERROR', error)
+      try{
+        const user = await User.findOneAndUpdate({ _id: req.pre.testsuite}, { $push: { testsuites: testSuite._id }}).exec()
+        if(!user)  throw Boom.badRequest('Not found user in the system')
+        const cat = await Category.findOneAndUpdate({ _id: req.payload.categoryId}, { $push: { testsuites: testSuite._id }}).exec()
+        if(!cat) throw Boom.badRequest('Not found category in the system')
+        const testsuite = await testSuite.save()
+        return res.response({ testsuite }).code(201);
+      }catch(error) {
         throw Boom.boomify(error)
       }
-      return res.response({ testSuite }).code(201);
     },
   }
 };
