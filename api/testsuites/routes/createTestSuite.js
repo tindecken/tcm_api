@@ -10,7 +10,7 @@ const verifyUniqueTestSuite = require('../../utils/testsuites/testsuiteFunctions
 const getUserID = require('../../utils/users/userFunctions').getUserID;
 const Joi = require('joi');
 var mongoose = require('mongoose');
-
+const headerToken = require('../../../config').headerToken
 
 
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
         abortEarly: false
       },
       headers: Joi.object({
-          'authorization': Joi.string().required()
+          'authorization': Joi.string().required().default(headerToken)
       }).unknown(),
       payload: createTestSuiteSchema,
       failAction: (request, h, err) => {

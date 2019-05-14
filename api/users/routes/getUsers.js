@@ -4,6 +4,7 @@ const User = require('../../models/User');
 const Boom = require('boom');
 const Joi = require('joi');
 const verifyAdminUser = require('../../utils/users/userFunctions').verifyAdminUser;
+const headerToken = require('../../../config').headerToken
 
 module.exports = {
   method: 'GET', 
@@ -16,7 +17,7 @@ module.exports = {
     tags: ['api', 'users'],
     validate: {
       headers: Joi.object({
-          'authorization': Joi.string().required()
+          'authorization': Joi.string().required().default(headerToken)
       }).unknown()
     },
     handler: (req, res) => {
