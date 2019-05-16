@@ -27,6 +27,12 @@ module.exports = {
     pre: [{ method: verifyUniqueUser, assign: 'user' }],
     // Validate the payload against the Joi schema
     validate: {
+      options: {
+        abortEarly: false
+      },
+      failAction: (request, h, err) => {
+        throw err;
+      },
       payload: createUserSchema
     },
     description: 'Create new user',
