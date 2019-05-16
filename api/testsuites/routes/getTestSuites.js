@@ -3,6 +3,7 @@
 const Boom = require('boom');
 const TestSuite = require('../../models/TestSuite');
 const Joi = require('joi');
+const headerToken = require('../../../config').headerToken
 
 module.exports = {
   method: 'GET',
@@ -13,7 +14,7 @@ module.exports = {
     // Validate the payload against the Joi schema
     validate: {
       headers: Joi.object({
-          'authorization': Joi.string().required()
+          'authorization': Joi.string().required().default(headerToken)
       }).unknown(),
     },
     description: 'Get all testsuites',

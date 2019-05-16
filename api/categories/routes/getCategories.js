@@ -6,6 +6,7 @@ const Category = require('../../models/Category');
 const User = require('../../models/User')
 const Joi = require('joi');
 var mongoose = require('mongoose');
+const headerToken = require('../../../config').headerToken
 
 module.exports = {
   method: 'GET',
@@ -15,7 +16,7 @@ module.exports = {
     // Validate the payload against the Joi schema
     validate: {
       headers: Joi.object({
-          'authorization': Joi.string().required()
+          'authorization': Joi.string().required().default(headerToken)
       }).unknown(),
     },
     description: 'Get all categories',

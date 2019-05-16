@@ -1,3 +1,4 @@
-const key = 'rivaldo';
+const secret = 'rivaldo';
+const headerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjZDE5N2VjYmU5NTY4MmExOGFjNDQ3MiIsInVzZXJuYW1lIjoidGluZGVja2VuIiwic2NvcGUiOiJhZG1pbiIsImlhdCI6MTU1Nzg0NjUwNiwiZXhwIjoxNTU3ODg5NzA2fQ.L9KqlteB65vMR7GDXuG5GLNKheojSJg_ge3i-AiwkB8'
 
-module.exports = key;
+module.exports = { secret, headerToken }
