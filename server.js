@@ -38,6 +38,7 @@ const init = async () => {
       title: 'Test',
       version: Pack.version,
     },
+    grouping: 'tags'
   }
   
   await server.register([

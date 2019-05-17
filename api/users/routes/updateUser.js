@@ -9,6 +9,9 @@ module.exports = {
   method: 'PATCH',
   path: '/api/users/{id}',
   config: {
+    description: 'Update one user',
+    notes: 'Update user with based on user_id',
+    tags: ['api', 'users'],
     pre: [{ method: verifyUniqueUser, assign: 'user' }],
     handler: (req, res) => {
       const id = req.params.id;
