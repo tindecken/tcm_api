@@ -14,7 +14,7 @@ const testGroupModel = new Schema({
   description: { type: String, trim: true },
   workID: { type: String, trim: true, default: ''},
   testCases: [{ type: Schema.Types.ObjectId, ref: 'TestCase' }],
-  testsuite: { type: Schema.Types.ObjectId, ref: 'TestSuite'},
+  testSuite: { type: Schema.Types.ObjectId, ref: 'TestSuite'},
   createdAt: { type: Date },
   updatedAt: { type: Date }
 });
