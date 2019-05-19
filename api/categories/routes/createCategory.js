@@ -1,10 +1,8 @@
 'use strict';
 
-const bcrypt = require('bcryptjs');
 const Boom = require('boom');
 const User = require('../../models/User')
 const Category = require('../../models/Category')
-const createCategorySchema = require('../schemas/createCategory');
 const verifyUniqueCategory = require('../../utils/categories/categoryFunctions').verifyUniqueCategory;
 const getUserID = require('../../utils/users/userFunctions').getUserID;
 const Joi = require('joi');
@@ -25,7 +23,11 @@ module.exports = {
       headers: Joi.object({
           'authorization': Joi.string().required().default(headerToken)
       }).unknown(),
-      payload: createCategorySchema,
+      payload: Joi.object({
+        name: Joi.string().required().min(3).max(50).description('name'),
+        description: Joi.string().description('description'),
+        workID: Joi.string().allow('').description('workid for this category'),
+      }),
       failAction: (request, h, err) => {
         throw err;
       }

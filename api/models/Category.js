@@ -11,7 +11,7 @@ const categoryModel = new Schema({
   description: { type: String, trim: true },
   workID: { type: String, trim: true, default: ''},
   owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  testsuites: [{ type: Schema.Types.ObjectId, ref: 'TestSuite' }],
+  testSuites: [{ type: Schema.Types.ObjectId, ref: 'TestSuite' }],
   createdAt: { type: Date },
   updatedAt: { type: Date }
 });

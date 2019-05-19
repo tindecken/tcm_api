@@ -5,7 +5,6 @@ const Boom = require('boom');
 const TestSuite = require('../../models/TestSuite');
 const TestGroup = require('../../models/TestGroup');
 const User = require('../../models/User')
-const createTestGroupSchema = require('../schemas/createTestGroup');
 const verifyUniqueTestGroup = require('../../utils/testgroups/testgroupFunctions').verifyUniqueTestGroup;
 const getUserID = require('../../utils/users/userFunctions').getUserID;
 const Joi = require('joi');
@@ -27,7 +26,16 @@ module.exports = {
       headers: Joi.object({
           'authorization': Joi.string().required().default(headerToken)
       }).unknown(),
-      payload: createTestGroupSchema,
+      payload: Joi.object({
+        name: Joi.string().required().min(3).max(50).description('name'),
+        description: Joi.string().description('description'),
+        workId: Joi.string().allow('').description('workid for this test group'),
+        testSuiteId: Joi.objectId().required().description('testsuite id').error(errors => {
+          return {
+            message: "testgroupId must be Mongo ObjectID and it's required."
+          }
+        })
+      }),
       failAction: (request, h, err) => {
         throw err;
       }

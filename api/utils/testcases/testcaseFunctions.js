@@ -3,7 +3,7 @@
 const Boom = require('boom');
 const TestCase = require('../../models/TestCase');
 
-function verifyUniqueTestGroup(req, h) {
+function verifyUniqueTestCase(req, h) {
   // Find an entry from the database that
   // matches either the email or username
   return TestCase.findOne(

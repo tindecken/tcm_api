@@ -9,8 +9,9 @@ const userModel = new Schema({
   username: { type: String, required: true, index: { unique: true } },
   password: { type: String, required: true },
   admin: { type: Boolean, required: true, default: false},
-  testsuites: [{ type: Schema.Types.ObjectId, ref: 'TestSuite' }],
+  testSuites: [{ type: Schema.Types.ObjectId, ref: 'TestSuite' }],
   categories: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
+  testCases:  [{ type: Schema.Types.ObjectId, ref: 'TestCase' }],
   builds: [{ type: Schema.Types.ObjectId, ref: 'Build' }],
   createdAt: { type: Date },
   updatedAt: { type: Date }
