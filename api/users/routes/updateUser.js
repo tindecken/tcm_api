@@ -2,8 +2,10 @@
 
 const Boom = require('boom');
 const User = require('../../models/User');
-const updateUserSchema = require('../schemas/updateUser');
 const verifyUniqueUser = require('../../utils/users/userFunctions').verifyUniqueUser;
+const Joi = require('joi')
+Joi.objectId = require('joi-objectid')(Joi)
+const headerToken = require('../../../config').headerToken
 
 module.exports = {
   method: 'PATCH',
@@ -13,25 +15,35 @@ module.exports = {
     notes: 'Update user with based on user_id',
     tags: ['api', 'users'],
     pre: [{ method: verifyUniqueUser, assign: 'user' }],
-    handler: (req, res) => {
-      const id = req.params.id;
-      User.findOneAndUpdate({ _id: id }, req.pre.user, (err, user) => {
-        if (err) {
-          throw Boom.badRequest(err);
-        }
-        if (!user) {
-          throw Boom.notFound('User not found!');
-        }
-        res({ message: 'User updated!' });
-      });
-    },
     validate: {
-      payload: updateUserSchema.payloadSchema,
-      params: updateUserSchema.paramsSchema
+      options: {
+        abortEarly: false
+      },
+      headers: Joi.object({
+        'authorization': Joi.string().required().default(headerToken)
+      }).unknown(),
+      payload: Joi.object({
+        username: Joi.string().min(3).max(30),
+        email: Joi.string().email(),
+        admin: Joi.boolean(),
+        password: Joi.string()
+      }),
+      params: Joi.object({
+        id: Joi.objectId().required()
+      }),
+      failAction: (request, h, err) => {
+        throw err;
+      }
     },
-    auth: {
-      strategy: 'jwt',
-      scope: ['admin']
-    }
+    handler: async (req, res) => {
+      try{
+        const id = req.params.id;
+        const user = await User.findOneAndUpdate({ _id: id}, { $set: { username: req.payload.username, email: req.payload.email, admin: req.payload.admin, password: req.payload.password }, $currentDate: { updatedAt: true }}).exec()
+        if (!user) throw Boom.notFound('User not found!')
+        else return res.response(user).code(200);
+      }catch(error) {
+        throw Boom.boomify(error)
+      }
+    },
   }
 };

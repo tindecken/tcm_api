@@ -1,7 +1,6 @@
 'use strict';
 
-const Boom = require('boom');
-const User = require('../../models/User');
+const Joi = require('joi')
 const verifyCredentials = require('../../utils/users/userFunctions').verifyCredentials;
 const createToken = require('../../utils/users/token');
 

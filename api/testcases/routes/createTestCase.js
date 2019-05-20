@@ -90,12 +90,11 @@ module.exports = {
         }
         if(req.payload.testGroupId){
           const tg = await TestGroup.findOneAndUpdate({ _id: req.payload.testGroupId}, { $push: { testCases: testCase._id }}).exec()
-          if(!ts) throw Boom.badRequest('Not found testgroup in the system')
+          if(!tg) throw Boom.badRequest('Not found testgroup in the system')
         }
         const testCaseSaved = await testCase.save()
         return res.response({ testCaseSaved }).code(201);
       }catch(error) {
-        console.log('ERR', error)
         throw Boom.boomify(error)
       }
     },
