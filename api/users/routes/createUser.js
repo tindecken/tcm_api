@@ -3,7 +3,6 @@
 const bcrypt = require('bcryptjs');
 const Boom = require('boom');
 const User = require('../../models/User');
-const createUserSchema = require('../schemas/createUser');
 const verifyUniqueUser = require('../../utils/users/userFunctions').verifyUniqueUser;
 const createToken = require('../../utils/users/token');
 const Joi = require('joi');
@@ -33,7 +32,11 @@ module.exports = {
       failAction: (request, h, err) => {
         throw err;
       },
-      payload: createUserSchema
+      payload: Joi.object({
+        username: Joi.string().alphanum().min(2).max(30).required().description('username'),
+        email: Joi.string().email().required().description('email'),
+        password: Joi.string().required().description('password, will salt 10')
+      })
     },
     description: 'Create new user',
     notes: 'This will create an non-admin user, return user\'s token',

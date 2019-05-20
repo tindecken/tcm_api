@@ -2,7 +2,6 @@
 
 const Boom = require('boom');
 const User = require('../../models/User');
-const authenticateUserSchema = require('../schemas/authenticateUser');
 const verifyCredentials = require('../../utils/users/userFunctions').verifyCredentials;
 const createToken = require('../../utils/users/token');
 
@@ -13,7 +12,16 @@ module.exports = {
     auth: false,
     pre: [{ method: verifyCredentials, assign: 'user' }],
     validate: {
-      payload: authenticateUserSchema
+      payload: Joi.alternatives().try(
+        Joi.object({
+          username: Joi.string().alphanum().min(2).max(30).required().default('tindecken'),
+          password: Joi.string().required().default('rivaldo')
+        }),
+        Joi.object({
+          email: Joi.string().email().required().default('tindecken@gmail.com'),
+          password: Joi.string().required().default('rivaldo')
+        })
+      )
     },
     description: 'Login',
     notes: 'Return user\s token',
