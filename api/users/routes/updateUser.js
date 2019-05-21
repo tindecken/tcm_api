@@ -38,10 +38,16 @@ module.exports = {
     handler: async (req, res) => {
       try{
         const id = req.params.id;
-        const user = await User.findOneAndUpdate({ _id: id}, { $set: { username: req.payload.username, email: req.payload.email, admin: req.payload.admin, password: req.payload.password }, $currentDate: { updatedAt: true }}, false, true).exec()
+        const user = await User.findOneAndUpdate({ _id: id}, { 
+          $set: { "admin": true }, 
+          $currentDate: { updatedAt: true }},
+          {
+            returnNewDocument: false
+          }).exec()
         if (!user) throw Boom.notFound('User not found!')
         else return res.response(user).code(200);
       }catch(error) {
+        console.log('ERROR', error)
         throw Boom.boomify(error)
       }
     },
