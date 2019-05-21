@@ -35,21 +35,27 @@ module.exports = {
         throw err;
       }
     },
-    handler: async (req, res) => {
-      try{
-        const id = req.params.id;
-        const user = await User.findOneAndUpdate({ _id: id}, { 
-          $set: { "admin": true }, 
-          $currentDate: { updatedAt: true }},
-          {
-            returnNewDocument: false
-          }).exec()
-        if (!user) throw Boom.notFound('User not found!')
-        else return res.response(user).code(200);
-      }catch(error) {
-        console.log('ERROR', error)
-        throw Boom.boomify(error)
+    handler: (req, res) => {
+      const id = req.params.id;
+      let update = {
+        "admin": req.payload.admin
       }
+      return User.findOneAndUpdate({ _id: id}, { 
+          $sett: { "admin": req.payload.admin, "email": req.payload.email, username: req.payload.username ? req.payload.username : "a" }, 
+          $currentDate: { updatedAt: true }
+        },
+        {
+          new: true
+        }).exec().then(user => {
+          if (!user) throw Boom.notFound('User not found!')
+          else return res.response(user).code(200);
+        }).catch(err => {
+          return Boom.boomify(err, {
+            statusCode: 512,
+            message: err.errmsg,
+            override: false
+          })
+        })
     },
   }
 };
