@@ -33,25 +33,20 @@ module.exports = {
     description: 'Create new user',
     notes: 'This will create an non-admin user, return user\'s token',
     tags: ['api', 'users'],
-    handler: (req, res) => {
+    handler: async (req, res) => {
       let user = new User();
       user._id = new mongoose.Types.ObjectId(),
       user.email = req.payload.email;
       user.username = req.payload.username;
       user.admin = false;
-      hashPassword(req.payload.password, (err, hash) => {
+      user.password = await hashPassword(req.payload.password)
+      user.save((err, user) => {
         if (err) {
           throw Boom.badRequest(err);
         }
-        user.password = hash;
-        user.save((err, user) => {
-          if (err) {
-            throw Boom.badRequest(err);
-          }
-        });
-      });
+      })
       // If the user is saved successfully, issue a JWT
       return res.response({ id_token: createToken(user) }).code(201);
-    },
+    }
   }
 };

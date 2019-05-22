@@ -58,13 +58,9 @@ function getUserID(req,h) {
   return req.auth.credentials.id
 }
 
-function hashPassword(password, cb) {
+async function hashPassword(password) {
   // Generate a salt at level 10 strength
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(password, salt, (err, hash) => {
-      return cb(err, hash);
-    });
-  });
+  return await bcrypt.hash(password, 10)
 }
 
 module.exports = {

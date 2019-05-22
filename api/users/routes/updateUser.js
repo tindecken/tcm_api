@@ -42,16 +42,8 @@ module.exports = {
       console.log('currentUser', currentUser)
       var hashedPassword = ""
       if(req.payload.password) {
-        hashPassword(req.payload.password, (err, hash) => {
-          if (err) {
-            throw Boom.badRequest(err);
-          }
-          console.log('hash', hash)
-          hashedPassword = hash
-          console.log('hashedPassword', hashedPassword)
-        })
+        hashedPassword = await hashPassword(req.payload.password)
       }
-      console.log('ABC', hashedPassword)
       let update = {
         admin: req.payload.admin ? req.payload.admin : currentUser.admin,
         email: req.payload.email ? req.payload.email : currentUser.email,

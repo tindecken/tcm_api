@@ -58,7 +58,7 @@ module.exports = {
     },
     description: 'Create new test case',
     notes: 'This will create new testcase in testgroup or testsuite',
-    tags: ['api', 'testgroups'],
+    tags: ['api', 'testcases'],
     handler: async (req, res) => {
       try{
         let testCase = new TestCase();
