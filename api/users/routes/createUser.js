@@ -4,18 +4,10 @@ const bcrypt = require('bcryptjs');
 const Boom = require('boom');
 const User = require('../../models/User');
 const verifyUniqueUser = require('../../utils/users/userFunctions').verifyUniqueUser;
+const hashPassword = require('../../utils/users/userFunctions').hashPassword;
 const createToken = require('../../utils/users/token');
 const Joi = require('joi');
 var mongoose = require('mongoose');
-
-function hashPassword(password, cb) {
-  // Generate a salt at level 10 strength
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(password, salt, (err, hash) => {
-      return cb(err, hash);
-    });
-  });
-}
 
 module.exports = {
   method: 'POST',

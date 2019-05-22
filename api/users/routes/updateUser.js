@@ -6,6 +6,7 @@ const verifyUniqueUser = require('../../utils/users/userFunctions').verifyUnique
 const Joi = require('joi')
 Joi.objectId = require('joi-objectid')(Joi)
 const headerToken = require('../../../config').headerToken
+const hashPassword = require('../../utils/users/userFunctions').hashPassword;
 
 module.exports = {
   method: 'PATCH',
@@ -35,15 +36,29 @@ module.exports = {
         throw err;
       }
     },
-    handler: (req, res) => {
+    handler: async (req, res) => {
       const id = req.params.id;
-      let update = {
-        "admin": req.payload.admin
+      var currentUser = await User.findById(id).exec()
+      console.log('currentUser', currentUser)
+      var hashedPassword = ""
+      if(req.payload.password) {
+        hashPassword(req.payload.password, (err, hash) => {
+          if (err) {
+            throw Boom.badRequest(err);
+          }
+          console.log('hash', hash)
+          hashedPassword = hash
+          console.log('hashedPassword', hashedPassword)
+        })
       }
-      return User.findOneAndUpdate({ _id: id}, { 
-          $sett: { "admin": req.payload.admin, "email": req.payload.email, username: req.payload.username ? req.payload.username : "a" }, 
-          $currentDate: { updatedAt: true }
-        },
+      console.log('ABC', hashedPassword)
+      let update = {
+        admin: req.payload.admin ? req.payload.admin : currentUser.admin,
+        email: req.payload.email ? req.payload.email : currentUser.email,
+        password: req.payload.password ? hashedPassword : currentUser.password,
+        updatedAt: Date.now()
+      }
+      return User.findOneAndUpdate({ _id: id}, update,
         {
           new: true
         }).exec().then(user => {
