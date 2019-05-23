@@ -12,12 +12,16 @@ const stepSchema = new Schema({
   runningTime: { type: Number, required: true, default: 0 },
   description: { type: String, trim: true },
   enabled: { type: Boolean, default: true},
-  testcase:  { type: Schema.Types.ObjectId, ref: 'TestCase' },
+  testCase:  { type: Schema.Types.ObjectId, ref: 'TestCase' },
   keyword: {type: Schema.Types.ObjectId, ref: 'Keyword'},
   client: {type: Schema.Types.ObjectId, ref: 'Client'},
   stepLog: {type: Schema.Types.ObjectId, ref: 'StepLog'},
   createdAt: { type: Date },
   updatedAt: { type: Date }
+});
+
+stepSchema.virtual('codeName').get(function () {
+  return `st_${_.snakeCase(this.name)}`
 });
 
 module.exports = mongoose.model('Step', stepSchema);

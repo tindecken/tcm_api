@@ -23,4 +23,8 @@ const keywordSchema = new Schema({
   updatedAt: { type: Date }
 });
 
+keywordSchema.virtual('codeName').get(function () {
+  return `kw_${_.snakeCase(this.name)}`
+});
+
 module.exports = mongoose.model('Keyword', keywordSchema);
