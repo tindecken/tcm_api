@@ -10,8 +10,8 @@ const clientSchema = new Schema({
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   description: { type: String, trim: true },
   type: { type: String, maxlength: 50, required: true},
-  value: { type: String, maxlength: 255},
-  keywords:[{type: Schema.Types.ObjectId, ref: 'Keyword'}],
+  path: { type: String, maxlength: 255},
+  steps:[{type: Schema.Types.ObjectId, ref: 'Step'}],
   createdAt: { type: Date },
   updatedAt: { type: Date }
 });

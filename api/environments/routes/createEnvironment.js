@@ -45,7 +45,7 @@ module.exports = {
         env.name = req.payload.name
         env.description = req.payload.description
         env.nodes = req.payload.nodes
-        env.createdAd = Date.now()
+        env.createdAt = Date.now()
         const environment = await env.save()
         console.log(environment)
         return res.response({ environment }).code(201);
