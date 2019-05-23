@@ -30,7 +30,7 @@ module.exports = {
         password: Joi.string()
       }),
       params: Joi.object({
-        id: Joi.objectId().required()
+        id: Joi.objectId().required().description('id of user need to update')
       }),
       failAction: (request, h, err) => {
         throw err;
