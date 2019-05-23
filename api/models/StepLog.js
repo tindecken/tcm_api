@@ -5,7 +5,7 @@ const _ = require('lodash')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const stepLog = new Schema({
+const stepLogSchema = new Schema({
   _id: Schema.Types.ObjectId,
   type: {type: String, enum: ["PASS", "FAIL", "INFO"]},
   value: { type: String },
@@ -13,4 +13,4 @@ const stepLog = new Schema({
   createdAt: { type: Date },
 });
 
-module.exports = mongoose.model('StepLog', stepLog);
+module.exports = mongoose.model('StepLog', stepLogSchema);

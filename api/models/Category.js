@@ -4,7 +4,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const categoryModel = new Schema({
+const categorySchema = new Schema({
   _id: Schema.Types.ObjectId,
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   runningTime: { type: Number, default: 0 },
@@ -16,8 +16,8 @@ const categoryModel = new Schema({
   updatedAt: { type: Date }
 });
 
-categoryModel.virtual('codeName').get(function () {
+categorySchema.virtual('codeName').get(function () {
   return `ts_${_.snakeCase(this.name)}`
 });
 
-module.exports = mongoose.model('Category', categoryModel);
+module.exports = mongoose.model('Category', categorySchema);

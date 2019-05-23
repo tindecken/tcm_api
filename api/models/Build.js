@@ -5,7 +5,7 @@ const _ = require('lodash')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const buildModel = new Schema({
+const buildSchema = new Schema({
   _id: Schema.Types.ObjectId,
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   status: {type: String, enum: ["PASS", "FAIL", "NORUN", "RUNNING"], default: "NORUN", required: true},
@@ -17,4 +17,4 @@ const buildModel = new Schema({
   updatedAt: { type: Date }
 });
 
-module.exports = mongoose.model('Build', buildModel);
+module.exports = mongoose.model('Build', buildSchema);

@@ -5,7 +5,7 @@ const _ = require('lodash')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const stepModel = new Schema({
+const stepSchema = new Schema({
   _id: Schema.Types.ObjectId,
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   status: {type: String, enum: ["PASS", "FAIL", "NORUN", "RUNNING"], default: "NORUN", required: true},
@@ -20,4 +20,4 @@ const stepModel = new Schema({
   updatedAt: { type: Date }
 });
 
-module.exports = mongoose.model('Step', stepModel);
+module.exports = mongoose.model('Step', stepSchema);

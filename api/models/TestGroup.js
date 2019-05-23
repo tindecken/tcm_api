@@ -5,7 +5,7 @@ const _ = require('lodash')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const testGroupModel = new Schema({
+const testGrouSchema = new Schema({
   _id: Schema.Types.ObjectId,
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   status: {type: String, enum: ["PASS", "FAIL", "NORUN", "RUNNING"], default: "NORUN", required: true},
@@ -19,8 +19,8 @@ const testGroupModel = new Schema({
   updatedAt: { type: Date }
 });
 
-testGroupModel.virtual('codeName').get(function () {
+testGrouSchema.virtual('codeName').get(function () {
   return `tg_${_.snakeCase(this.name)}`
 });
 
-module.exports = mongoose.model('TestGroup', testGroupModel);
+module.exports = mongoose.model('TestGroup', testGrouSchema);

@@ -5,7 +5,7 @@ const _ = require('lodash')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const keywordModel = new Schema({
+const keywordSchema = new Schema({
   _id: Schema.Types.ObjectId,
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   inUse: { type: Boolean, default: true},
@@ -23,4 +23,4 @@ const keywordModel = new Schema({
   updatedAt: { type: Date }
 });
 
-module.exports = mongoose.model('Keyword', keywordModel);
+module.exports = mongoose.model('Keyword', keywordSchema);

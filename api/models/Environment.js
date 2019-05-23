@@ -1,11 +1,9 @@
 'use strict';
-
 const _ = require('lodash')
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const enrionmentModel = new Schema({
+const enrionmentSchema = new Schema({
   _id: Schema.Types.ObjectId,
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   description: { type: String, trim: true },
@@ -17,7 +15,14 @@ const enrionmentModel = new Schema({
   testsuites: { type: Schema.Types.ObjectId, ref: 'TestSuite'},
   createdAt: { type: Date },
   updatedAt: { type: Date }
-
 });
 
-module.exports = mongoose.model('Environment', enrionmentModel);
+//make sure there's no duplicated nodes.name
+enrionmentSchema.pre('save', function(next){
+  this.nodes = _.uniqBy(this.nodes, function (e) {
+    return e.name;
+  })
+  next()
+})
+
+module.exports = mongoose.model('Environment', enrionmentSchema);

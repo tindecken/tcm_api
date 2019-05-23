@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userModel = new Schema({
+const userSchema = new Schema({
   _id: Schema.Types.ObjectId,
   email: { type: String, required: true, index: { unique: true } },
   username: { type: String, required: true, index: { unique: true } },
@@ -17,4 +17,4 @@ const userModel = new Schema({
   updatedAt: { type: Date }
 });
 
-module.exports = mongoose.model('User', userModel);
+module.exports = mongoose.model('User', userSchema);

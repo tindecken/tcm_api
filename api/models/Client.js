@@ -5,7 +5,7 @@ const _ = require('lodash')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const clientModel = new Schema({
+const clientSchema = new Schema({
   _id: Schema.Types.ObjectId,
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   description: { type: String, trim: true },
@@ -16,4 +16,4 @@ const clientModel = new Schema({
   updatedAt: { type: Date }
 });
 
-module.exports = mongoose.model('Client', clientModel);
+module.exports = mongoose.model('Client', clientSchema);
