@@ -10,14 +10,13 @@ const keywordSchema = new Schema({
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   inUse: { type: Boolean, default: true},
   description: { type: String, trim: true },
-  feature:  { type: String, maxlength: 255, required: true },
   params: [{
     name: { type: String, trim: true, maxlength: 25, required: true},
-    value: { type: String, maxlength: 255 },
-    node_ref: {type: String}
+    description: {type: String, required: true},
+    defaultValue: { type: String, maxlength: 255, required: true }
   }],
-  category: { type: String, required: true, maxlength: 50},
-  feature:  { type: String, required: true, maxlength: 50},
+  owner:  {type: String, trim: true, required: true},
+  kwFeatureId:  {type: Schema.Types.ObjectId, ref: 'KWFeature'},
   steps: [{type: Schema.Types.ObjectId, ref: 'Step'}],
   createdAt: { type: Date },
   updatedAt: { type: Date }
