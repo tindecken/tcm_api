@@ -1,0 +1,28 @@
+{ 
+    "_id" : ObjectId("5cf4dc13c69eb71a84723dc5"), 
+    "kwFeatures" : [
+        ObjectId("5cf4dc2ec69eb71a84723dc6"), 
+        ObjectId("5cf4dc94c69eb71a84723dc7")
+    ], 
+    "keywords" : [
+
+    ], 
+    "name" : "Customer", 
+    "description" : "Customer KW Category", 
+    "createdAt" : ISODate("2019-06-03T08:36:35.627+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4dcb7c69eb71a84723dc8"), 
+    "kwFeatures" : [
+        ObjectId("5cf4dcc8c69eb71a84723dc9"), 
+        ObjectId("5cf4dcd0c69eb71a84723dca")
+    ], 
+    "keywords" : [
+
+    ], 
+    "name" : "Admin", 
+    "description" : "Admin KW Category", 
+    "createdAt" : ISODate("2019-06-03T08:39:19.180+0000"), 
+    "__v" : NumberInt(0)
+}
