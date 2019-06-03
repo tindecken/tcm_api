@@ -14,6 +14,14 @@ const stepSchema = new Schema({
   enabled: { type: Boolean, default: true},
   testCase:  { type: Schema.Types.ObjectId, ref: 'TestCase' },
   keyword: {type: Schema.Types.ObjectId, ref: 'Keyword'},
+  order: { type: Number, required: true, default: 1 },
+  params: [{
+    name: { type: String, trim: true, maxlength: 25, required: true},
+    description: {type: String, required: true},
+    defaultValue: { type: String, maxlength: 255, required: true },
+    value: { type: String, maxlength: 255, required: true },
+    ref_node: { type: String, maxlength: 255, required: true }
+  }],
   client: {type: Schema.Types.ObjectId, ref: 'Client'},
   stepLog: {type: Schema.Types.ObjectId, ref: 'StepLog'},
   createdAt: { type: Date },

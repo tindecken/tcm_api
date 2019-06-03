@@ -18,7 +18,7 @@ module.exports = {
   path: '/api/testsuites',
   config: {
     auth: 'jwt',
-    pre: [{ method: verifyUniqueTestSuite, assign: 'testsuite' }, { method: getUserID, assign: 'user'}],
+    pre: [{ method: verifyUniqueTestSuite, assign: 'testsuite' }, { method: getUserID, assign: 'userID'}],
     // Validate the payload against the Joi schema
     validate: {
       options: {
@@ -51,18 +51,22 @@ module.exports = {
       testSuite.description = req.payload.description
       if(req.payload.workID) testSuite.workID = req.payload.workID
       else testSuite.workID = ''
-      testSuite.owner = req.pre.testsuite
+      testSuite.owner = req.pre.userID
       testSuite.category = req.payload.categoryId
       testSuite.createdAt = Date.now()
       try{
-        const user = await User.findOneAndUpdate({ _id: req.pre.testsuite}, { $push: { testSuites: testSuite._id }}).exec()
+        const user = await User.findOneAndUpdate({ _id: req.pre.userID}, { $push: { testSuites: testSuite._id }}).exec()
         if(!user)  throw Boom.badRequest('Not found user in the system')
         const cat = await Category.findOneAndUpdate({ _id: req.payload.categoryId}, { $push: { testSuites: testSuite._id }}).exec()
         if(!cat) throw Boom.badRequest('Not found category in the system')
         const testsuite = await testSuite.save()
         return res.response({ testsuite }).code(201);
-      }catch(error) {
-        throw Boom.boomify(error)
+      }catch(err) {
+        return Boom.boomify(err, {
+          statusCode: 512,
+          message: err.errmsg,
+          override: false
+        })
       }
     },
   }

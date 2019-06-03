@@ -14,7 +14,7 @@ module.exports = {
   path: '/api/categories',
   config: {
     auth: 'jwt',
-    pre: [{ method: verifyUniqueCategory, assign: 'category' }, { method: getUserID, assign: 'category'}],
+    pre: [{ method: verifyUniqueCategory, assign: 'category' }, { method: getUserID, assign: 'userID'}],
     // Validate the payload against the Joi schema
     validate: {
       options: {
@@ -35,27 +35,27 @@ module.exports = {
     description: 'Create new category',
     notes: 'This will create new category',
     tags: ['api', 'categories'],
-    handler: (req, res) => {
+    handler: async (req, res) => {
       let cat = new Category();
       cat._id = new mongoose.Types.ObjectId()
       cat.name = req.payload.name
       cat.description = req.payload.description
       if(req.payload.workID) cate.workID = req.payload.workID
       else cat.workID = ''
-      cat.owner = req.pre.category
+      cat.owner = req.pre.userID
       cat.createdAt = Date.now()
-      cat.save((err, category) => {
-        if (err) {
-          throw Boom.badRequest(err);
-        }
-        User.findOneAndUpdate({ _id: req.pre.category}, { $push: { categories: cat._id }})
-          .exec()
-          .then()
-          .catch(err => {
-            throw Boom.internal(err)
-          })
-      });
-      return res.response({ cat }).code(201);
+      try{
+        const user = await User.findOneAndUpdate({ _id: req.pre.userID}, { $push: { categories: cat._id }}).exec()
+        if(!user)  throw Boom.badRequest('Not found user in the system')
+        const category = await cat.save()
+        return res.response({ category }).code(201);
+      }catch(err) {
+        return Boom.boomify(err, {
+          statusCode: 512,
+          message: err.errmsg,
+          override: false
+        })
+      }
     },
   }
 };
