@@ -1,0 +1,90 @@
+{ 
+    "_id" : ObjectId("5cf4d7ee90102f3c506bc63c"), 
+    "nodes" : [
+        {
+            "_id" : ObjectId("5cf4d7ee90102f3c506bc642"), 
+            "name" : "customer url", 
+            "value" : "https://manualqc.acomcloud.com", 
+            "description" : "Customer URL"
+        }, 
+        {
+            "_id" : ObjectId("5cf4d7ee90102f3c506bc641"), 
+            "name" : "admin url", 
+            "value" : "https://adminqc.acomcloud.com", 
+            "description" : "Admin URL"
+        }, 
+        {
+            "_id" : ObjectId("5cf4d7ee90102f3c506bc640"), 
+            "name" : "customer username", 
+            "value" : "tindecken", 
+            "description" : "Customer UserName"
+        }, 
+        {
+            "_id" : ObjectId("5cf4d7ee90102f3c506bc63f"), 
+            "name" : "customer password", 
+            "value" : "rivaldo", 
+            "description" : "Customer password"
+        }, 
+        {
+            "_id" : ObjectId("5cf4d7ee90102f3c506bc63e"), 
+            "name" : "Admin username", 
+            "value" : "thaihoang.nguyen", 
+            "description" : "Admin UserName"
+        }, 
+        {
+            "_id" : ObjectId("5cf4d7ee90102f3c506bc63d"), 
+            "name" : "admin password", 
+            "value" : "rivaldo", 
+            "description" : "Admin password"
+        }
+    ], 
+    "name" : "manualqc.acomcloud.com", 
+    "description" : "Test Bed for manualqc", 
+    "createdAt" : ISODate("2019-06-03T08:18:54.721+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4d83490102f3c506bc643"), 
+    "nodes" : [
+        {
+            "_id" : ObjectId("5cf4d83490102f3c506bc649"), 
+            "name" : "customer url", 
+            "value" : "https://manualqc2.acomcloud.com", 
+            "description" : "Customer URL for preua environment"
+        }, 
+        {
+            "_id" : ObjectId("5cf4d83490102f3c506bc648"), 
+            "name" : "admin url", 
+            "value" : "https://adminqc2.acomcloud.com", 
+            "description" : "Admin URL for preua environment"
+        }, 
+        {
+            "_id" : ObjectId("5cf4d83490102f3c506bc647"), 
+            "name" : "customer username", 
+            "value" : "tindecken", 
+            "description" : "Customer UserName"
+        }, 
+        {
+            "_id" : ObjectId("5cf4d83490102f3c506bc646"), 
+            "name" : "customer password", 
+            "value" : "rivaldo", 
+            "description" : "Customer password"
+        }, 
+        {
+            "_id" : ObjectId("5cf4d83490102f3c506bc645"), 
+            "name" : "Admin username", 
+            "value" : "thaihoang.nguyen", 
+            "description" : "Admin UserName"
+        }, 
+        {
+            "_id" : ObjectId("5cf4d83490102f3c506bc644"), 
+            "name" : "admin password", 
+            "value" : "rivaldo", 
+            "description" : "Admin password"
+        }
+    ], 
+    "name" : "manualqc2.acomcloud.com", 
+    "description" : "Test Bed for manualqc2 - preua environment", 
+    "createdAt" : ISODate("2019-06-03T08:20:04.394+0000"), 
+    "__v" : NumberInt(0)
+}

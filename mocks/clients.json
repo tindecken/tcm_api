@@ -1,0 +1,33 @@
+{ 
+    "_id" : ObjectId("5cf4cc7a8ad5ac5850380608"), 
+    "steps" : [
+
+    ], 
+    "name" : "Chrome", 
+    "description" : "Chrome Browser", 
+    "type" : "Chrome", 
+    "createdAt" : ISODate("2019-06-03T07:30:02.700+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4cda58ad5ac5850380609"), 
+    "steps" : [
+
+    ], 
+    "name" : "None", 
+    "description" : "None", 
+    "type" : "None", 
+    "createdAt" : ISODate("2019-06-03T07:35:01.304+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4cdbb8ad5ac585038060a"), 
+    "steps" : [
+
+    ], 
+    "name" : "Azure Storage", 
+    "description" : "None", 
+    "type" : "Electron", 
+    "createdAt" : ISODate("2019-06-03T07:35:23.152+0000"), 
+    "__v" : NumberInt(0)
+}
