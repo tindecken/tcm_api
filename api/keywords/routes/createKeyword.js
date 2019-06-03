@@ -31,9 +31,9 @@ module.exports = {
         kwFeatureId: Joi.objectId().required().description('this keyword is from feature'),
         owner: Joi.string().required().description('owner of this keyword, input username').default('tindecken'),
         params: Joi.array().required().items(Joi.object({
-          name: Joi.string().description('parameter name'),
+          name: Joi.string().required().description('parameter name'),
           defaultValue: Joi.string().description('parameter value'),
-          description: Joi.string().max(200).description('node description')
+          description: Joi.string().max(200).required().description('node description')
         })).description('list of nodes of the environment'),
       }),
       failAction: (request, h, err) => {

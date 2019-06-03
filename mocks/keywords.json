@@ -1,0 +1,210 @@
+{ 
+    "_id" : ObjectId("5cf4e0e27286024cfcc5bfce"), 
+    "inUse" : true, 
+    "steps" : [
+
+    ], 
+    "params" : [
+        {
+            "defaultValue" : "", 
+            "_id" : ObjectId("5cf4e0e27286024cfcc5bfcf"), 
+            "name" : "Optional", 
+            "description" : "Optional"
+        }
+    ], 
+    "name" : "GoToSearch", 
+    "description" : "Page Home - Go To Search  Function", 
+    "kwFeatureId" : ObjectId("5cf4dc2ec69eb71a84723dc6"), 
+    "owner" : "tindecken", 
+    "createdAt" : ISODate("2019-06-03T08:57:06.024+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4e1417286024cfcc5bfd0"), 
+    "inUse" : true, 
+    "steps" : [
+
+    ], 
+    "params" : [
+        {
+            "defaultValue" : "null|isClick(false)", 
+            "_id" : ObjectId("5cf4e1417286024cfcc5bfd1"), 
+            "name" : "Optional", 
+            "description" : "isClick(false) mean check Payables Invoices Button Exist or not"
+        }
+    ], 
+    "name" : "GoToPayablesInvoices", 
+    "description" : "Page Home - Go To Payables Invoices Feature", 
+    "kwFeatureId" : ObjectId("5cf4dc2ec69eb71a84723dc6"), 
+    "owner" : "thaihoang.nguyen", 
+    "createdAt" : ISODate("2019-06-03T08:58:41.640+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4e7e97286024cfcc5bfd2"), 
+    "inUse" : true, 
+    "steps" : [
+
+    ], 
+    "params" : [
+        {
+            "defaultValue" : "", 
+            "_id" : ObjectId("5cf4e7e97286024cfcc5bfd3"), 
+            "name" : "Optional", 
+            "description" : "null"
+        }
+    ], 
+    "name" : "GoToHomePage", 
+    "description" : "Page Home - Go To Home Page", 
+    "kwFeatureId" : ObjectId("5cf4dc2ec69eb71a84723dc6"), 
+    "owner" : "cuong.tran", 
+    "createdAt" : ISODate("2019-06-03T09:27:05.433+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4e8cd7286024cfcc5bfd4"), 
+    "inUse" : true, 
+    "steps" : [
+
+    ], 
+    "params" : [
+        {
+            "defaultValue" : "admin@ezitsol.com", 
+            "_id" : ObjectId("5cf4e8cd7286024cfcc5bfd8"), 
+            "name" : "sUserName", 
+            "description" : "User Name"
+        }, 
+        {
+            "defaultValue" : "admin", 
+            "_id" : ObjectId("5cf4e8cd7286024cfcc5bfd7"), 
+            "name" : "sPassword", 
+            "description" : "Password"
+        }, 
+        {
+            "defaultValue" : "true", 
+            "_id" : ObjectId("5cf4e8cd7286024cfcc5bfd6"), 
+            "name" : "sIsClick", 
+            "description" : "Click Sign In"
+        }, 
+        {
+            "defaultValue" : "null|FORGOTPASS(true)|CheckBtnSignInDisable(true)", 
+            "_id" : ObjectId("5cf4e8cd7286024cfcc5bfd5"), 
+            "name" : "sOptional", 
+            "description" : "If you want to click on Forgot Password, then put FORGOTPASS(true), or check button disable input CheckBtnSignInDisable(true)"
+        }
+    ], 
+    "name" : "Login", 
+    "description" : "Page_Login - Login to AP outsource web page", 
+    "kwFeatureId" : ObjectId("5cf4dc94c69eb71a84723dc7"), 
+    "owner" : "cuong.tran", 
+    "createdAt" : ISODate("2019-06-03T09:30:53.020+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4e9067286024cfcc5bfd9"), 
+    "inUse" : true, 
+    "steps" : [
+
+    ], 
+    "params" : [
+        {
+            "defaultValue" : "", 
+            "_id" : ObjectId("5cf4e9067286024cfcc5bfda"), 
+            "name" : "sOptional", 
+            "description" : "Optional"
+        }
+    ], 
+    "name" : "Logout", 
+    "description" : "Page_Login - Log out", 
+    "kwFeatureId" : ObjectId("5cf4dc94c69eb71a84723dc7"), 
+    "owner" : "cuong.tran", 
+    "createdAt" : ISODate("2019-06-03T09:31:50.186+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4e98c7286024cfcc5bfdb"), 
+    "inUse" : true, 
+    "steps" : [
+
+    ], 
+    "params" : [
+        {
+            "defaultValue" : "cuong.tran@ezitsol.com", 
+            "_id" : ObjectId("5cf4e98c7286024cfcc5bfdf"), 
+            "name" : "sEmail", 
+            "description" : "Enter Email Address"
+        }, 
+        {
+            "defaultValue" : "true|false|null", 
+            "_id" : ObjectId("5cf4e98c7286024cfcc5bfde"), 
+            "name" : "sIsSubmitted", 
+            "description" : "If you want click on submit button then set sIsSubmitted =\"True\", If not them set to false"
+        }, 
+        {
+            "defaultValue" : "null|Typically e-mails are received", 
+            "_id" : ObjectId("5cf4e98c7286024cfcc5bfdd"), 
+            "name" : "sReceive", 
+            "description" : "Click button \"I Haven't Receive An Email\", After that verify the message "
+        }, 
+        {
+            "defaultValue" : "", 
+            "_id" : ObjectId("5cf4e98c7286024cfcc5bfdc"), 
+            "name" : "sOptional", 
+            "description" : "Optional"
+        }
+    ], 
+    "name" : "ForgotPassword", 
+    "description" : "Page_Login - Forgot Password", 
+    "kwFeatureId" : ObjectId("5cf4dc94c69eb71a84723dc7"), 
+    "owner" : "cuong.tran", 
+    "createdAt" : ISODate("2019-06-03T09:34:04.331+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4eb4a7286024cfcc5bfe0"), 
+    "inUse" : true, 
+    "steps" : [
+
+    ], 
+    "params" : [
+        {
+            "defaultValue" : "", 
+            "_id" : ObjectId("5cf4eb4a7286024cfcc5bfe1"), 
+            "name" : "sOptional", 
+            "description" : "Optional"
+        }
+    ], 
+    "name" : "GoToCustomers", 
+    "description" : "Go To Page", 
+    "kwFeatureId" : ObjectId("5cf4dcd0c69eb71a84723dca"), 
+    "owner" : "hoang.nguyen", 
+    "createdAt" : ISODate("2019-06-03T09:41:30.050+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cf4ecb17286024cfcc5bfe2"), 
+    "inUse" : true, 
+    "steps" : [
+
+    ], 
+    "params" : [
+        {
+            "defaultValue" : "", 
+            "_id" : ObjectId("5cf4ecb17286024cfcc5bfe4"), 
+            "name" : "sURL", 
+            "description" : "Page URL Needto nagigate"
+        }, 
+        {
+            "defaultValue" : "", 
+            "_id" : ObjectId("5cf4ecb17286024cfcc5bfe3"), 
+            "name" : "Optional", 
+            "description" : "Optional"
+        }
+    ], 
+    "name" : "OpenTab", 
+    "description" : "Open URL in new Tab", 
+    "kwFeatureId" : ObjectId("5cf4dcd0c69eb71a84723dca"), 
+    "owner" : "hoang.nguyen", 
+    "createdAt" : ISODate("2019-06-03T09:47:29.687+0000"), 
+    "__v" : NumberInt(0)
+}

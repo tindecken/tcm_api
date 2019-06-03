@@ -45,6 +45,7 @@ module.exports = {
         kwFea.name = req.payload.name
         kwFea.description = req.payload.description
         kwFea.createdAt = Date.now()
+        kwFea.kwCategoryId = req.payload.kwCategoryId
         const kwCat = await KWCategory.findOneAndUpdate({ _id: req.payload.kwCategoryId}, { $push: { kwFeatures: kwFea._id }}).exec()
         if(!kwCat) throw Boom.badRequest('Not found keyword category in the system')
         const kwFeature = await kwFea.save()

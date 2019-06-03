@@ -13,7 +13,7 @@ const keywordSchema = new Schema({
   params: [{
     name: { type: String, trim: true, maxlength: 25, required: true},
     description: {type: String, required: true},
-    defaultValue: { type: String, maxlength: 255, required: true }
+    defaultValue: { type: String, maxlength: 255, default: '' }
   }],
   owner:  {type: String, trim: true, required: true},
   kwFeatureId:  {type: Schema.Types.ObjectId, ref: 'KWFeature'},
