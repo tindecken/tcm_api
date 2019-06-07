@@ -24,7 +24,7 @@ module.exports = {
     tags: ['api', 'categories'],
     handler: async (req, res) => {
       try{
-        const categories = await Category.find().populate({path: 'testSuites', populate: {path: 'testGroups', populate: {path: 'testCases'}}}).exec()
+        const categories = await Category.find().populate({path: 'testSuites', populate: {path: 'testGroups testCases', populate: {path: 'testCases'}}}).exec()
         if(!categories) throw Boom.notFound("Not found categories")
         else return res.response(categories).code(200)
       }catch(err){

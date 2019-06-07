@@ -29,7 +29,7 @@ module.exports = {
           'authorization': Joi.string().required().default(headerToken)
       }).unknown(),
       payload: Joi.object({
-        name: Joi.string().required().min(3).max(50).description('name'),
+        name: Joi.string().required().min(3).max(255).description('name'),
         description: Joi.string().description('description'),
         workId: Joi.string().allow('').description('workid for this test group'),
         dependencies: Joi.array().items(Joi.objectId()).description('list of denpendencies of tescase').error(errors => {

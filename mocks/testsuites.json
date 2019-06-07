@@ -4,10 +4,11 @@
     "runningTime" : NumberInt(0), 
     "workID" : "", 
     "testGroups" : [
-
+        ObjectId("5cfa88e57b137a2dbc586fbd"), 
+        ObjectId("5cfa88ef7b137a2dbc586fbe")
     ], 
     "testCases" : [
-
+        ObjectId("5cfa88ca7b137a2dbc586fbc")
     ], 
     "builds" : [
 
@@ -46,10 +47,12 @@
     "runningTime" : NumberInt(0), 
     "workID" : "", 
     "testGroups" : [
-
+        ObjectId("5cfa7f842c05cd32c89ce85c"), 
+        ObjectId("5cfa7fa12c05cd32c89ce85d"), 
+        ObjectId("5cfa80082c05cd32c89ce85e")
     ], 
     "testCases" : [
-
+        ObjectId("5cfa80e92c05cd32c89ce863")
     ], 
     "builds" : [
 
@@ -67,10 +70,12 @@
     "runningTime" : NumberInt(0), 
     "workID" : "", 
     "testGroups" : [
-
+        ObjectId("5cfa804c2c05cd32c89ce85f"), 
+        ObjectId("5cfa80662c05cd32c89ce860"), 
+        ObjectId("5cfa80782c05cd32c89ce861")
     ], 
     "testCases" : [
-
+        ObjectId("5cfa81072c05cd32c89ce864")
     ], 
     "builds" : [
 
