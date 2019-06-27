@@ -9,49 +9,7 @@ var mongoose = require('mongoose');
 const headerToken = require('../../../config').headerToken
 const _ = require('lodash')
 
-/**
- *
- * @param {Array need to get} list
- * @param {Property (_id)} key
- * @param {.type (testcase)} type
- * @param {next (children)} next
- * @param {Return array of Primary IDs} r
- */
-function renameDeep(list) {
-  for (var i = 0; i < list.length; i++) {
-    if (list[i].hasOwnProperty('testSuites')){
-      console.log('A')
-      renameKeyName(list[i], 'testSuites', 'children')
-      result.push(renameKeyName(list[i], key, renameKey))
-    }else {
-      console.log('B', list[i])
-      result.push(list[i])
-      if (list[i][next]){
-        renameDeep(list[i][next], key, renameKey ,next, result)
-      }
-    }
-  }
-  return result;
-}
 
-function renameKeyName(obj, oldName, newName) {
-  const clone = cloneDeep(obj);
-  const keyVal = clone[oldName];
-
-  delete clone[oldName];
-  clone[newName] = keyVal;
-
-  return clone;
-}
-
-const renameKeys = (keysMap, obj) =>
-  Object.keys(obj).reduce(
-    (acc, key) => ({
-      ...acc,
-      ...{ [keysMap[key] || key]: obj[key] }
-    }),
-    {}
-  );
 
 module.exports = {
   method: 'GET',
@@ -71,7 +29,7 @@ module.exports = {
       try{
         const categories = await Category.find().populate({path: 'testSuites', populate: {path: 'testGroups testCases', populate: {path: 'testCases'}}}).exec()
         if(!categories) throw Boom.notFound("Not found categories")
-        let processedCat = renameDeep(categories, 'testSuites', 'children', 'testSuites', [])
+        const processedCat = transfer(categories)
         return res.response(processedCat).code(200)
       }catch(err){
         return Boom.boomify(err, {
