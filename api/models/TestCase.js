@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 
 const testCaseSchema = new Schema({
   _id: Schema.Types.ObjectId,
+  type: { type: String, default: "testcase"},
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 255, trim: true},
   status: {type: String, enum: ["PASS", "FAIL", "NORUN", "RUNNING"], default: "NORUN", required: true},
   runningTime: { type: Number, required: true, default: 0 },

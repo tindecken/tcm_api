@@ -1,5 +1,6 @@
 { 
     "_id" : ObjectId("5cf4d7ee90102f3c506bc63c"), 
+    "type": "environment",
     "nodes" : [
         {
             "_id" : ObjectId("5cf4d7ee90102f3c506bc642"), 
@@ -45,6 +46,7 @@
 }
 { 
     "_id" : ObjectId("5cf4d83490102f3c506bc643"), 
+    "type": "environment",
     "nodes" : [
         {
             "_id" : ObjectId("5cf4d83490102f3c506bc649"), 

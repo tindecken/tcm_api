@@ -1,11 +1,12 @@
 { 
     "_id" : ObjectId("5cf4c238f3642152a8d0e0e5"), 
+    "type": "category",
     "runningTime" : NumberInt(0), 
     "workID" : "", 
     "testSuites" : [
         ObjectId("5cf4c5838119d62dd8f42238"), 
         ObjectId("5cf4c5878119d62dd8f42239")
-    ], 
+    ],
     "name" : "Bank Accounts", 
     "description" : "Bank Accounts Category", 
     "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
@@ -14,6 +15,7 @@
 }
 { 
     "_id" : ObjectId("5cf4c24cf3642152a8d0e0e6"), 
+    "type": "category",
     "runningTime" : NumberInt(0), 
     "workID" : "", 
     "testSuites" : [

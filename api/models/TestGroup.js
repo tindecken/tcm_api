@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 
 const testGrouSchema = new Schema({
   _id: Schema.Types.ObjectId,
+  type: { type: String, default: "testgroup"},
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   status: {type: String, enum: ["PASS", "FAIL", "NORUN", "RUNNING"], default: "NORUN", required: true},
   enabled: { type: Boolean, default: true },

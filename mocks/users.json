@@ -1,5 +1,6 @@
 { 
     "_id" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
+    "type": "user",
     "admin" : true, 
     "testSuites" : [
         ObjectId("5cf4c3d5f3642152a8d0e0e7"), 

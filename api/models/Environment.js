@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 const enrionmentSchema = new Schema({
   _id: Schema.Types.ObjectId,
+  type: { type: String, default: "environment"},
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   description: { type: String, trim: true },
   nodes: [{

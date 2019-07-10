@@ -1,5 +1,6 @@
 { 
-    "_id" : ObjectId("5cf4e0e27286024cfcc5bfce"), 
+    "_id" : ObjectId("5cf4e0e27286024cfcc5bfce"),
+    "type": "keyword",
     "inUse" : true, 
     "steps" : [
 
@@ -21,6 +22,7 @@
 }
 { 
     "_id" : ObjectId("5cf4e1417286024cfcc5bfd0"), 
+    "type": "keyword",
     "inUse" : true, 
     "steps" : [
 
@@ -42,6 +44,7 @@
 }
 { 
     "_id" : ObjectId("5cf4e7e97286024cfcc5bfd2"), 
+    "type": "keyword",
     "inUse" : true, 
     "steps" : [
 
@@ -63,6 +66,7 @@
 }
 { 
     "_id" : ObjectId("5cf4e8cd7286024cfcc5bfd4"), 
+    "type": "keyword",
     "inUse" : true, 
     "steps" : [
 
@@ -102,6 +106,7 @@
 }
 { 
     "_id" : ObjectId("5cf4e9067286024cfcc5bfd9"), 
+    "type": "keyword",
     "inUse" : true, 
     "steps" : [
 
@@ -123,6 +128,7 @@
 }
 { 
     "_id" : ObjectId("5cf4e98c7286024cfcc5bfdb"), 
+    "type": "keyword",
     "inUse" : true, 
     "steps" : [
 
@@ -162,6 +168,7 @@
 }
 { 
     "_id" : ObjectId("5cf4eb4a7286024cfcc5bfe0"), 
+    "type": "keyword",
     "inUse" : true, 
     "steps" : [
 
@@ -183,6 +190,7 @@
 }
 { 
     "_id" : ObjectId("5cf4ecb17286024cfcc5bfe2"), 
+    "type": "keyword",
     "inUse" : true, 
     "steps" : [
 

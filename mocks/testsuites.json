@@ -1,5 +1,6 @@
 { 
-    "_id" : ObjectId("5cf4c3d5f3642152a8d0e0e7"), 
+    "_id" : ObjectId("5cf4c3d5f3642152a8d0e0e7"),
+    "type": "testsuite",
     "status" : "NORUN", 
     "runningTime" : NumberInt(0), 
     "workID" : "", 
@@ -21,7 +22,8 @@
     "__v" : NumberInt(0)
 }
 { 
-    "_id" : ObjectId("5cf4c4f6f3642152a8d0e0e8"), 
+    "_id" : ObjectId("5cf4c4f6f3642152a8d0e0e8"),
+    "type": "testsuite",
     "status" : "NORUN", 
     "runningTime" : NumberInt(0), 
     "workID" : "", 
@@ -42,7 +44,8 @@
     "__v" : NumberInt(0)
 }
 { 
-    "_id" : ObjectId("5cf4c5838119d62dd8f42238"), 
+    "_id" : ObjectId("5cf4c5838119d62dd8f42238"),
+    "type": "testsuite",
     "status" : "NORUN", 
     "runningTime" : NumberInt(0), 
     "workID" : "", 
@@ -65,7 +68,8 @@
     "__v" : NumberInt(0)
 }
 { 
-    "_id" : ObjectId("5cf4c5878119d62dd8f42239"), 
+    "_id" : ObjectId("5cf4c5878119d62dd8f42239"),
+    "type": "testsuite",
     "status" : "NORUN", 
     "runningTime" : NumberInt(0), 
     "workID" : "", 

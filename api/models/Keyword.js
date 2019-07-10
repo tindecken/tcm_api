@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 
 const keywordSchema = new Schema({
   _id: Schema.Types.ObjectId,
+  type: { type: String, default: "keyword"},
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   inUse: { type: Boolean, default: true},
   description: { type: String, trim: true },

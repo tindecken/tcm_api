@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 
 const kwFeatureSchema = new Schema({
   _id: Schema.Types.ObjectId,
+  type: { type: String, default: "kwfeature"},
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   description: { type: String, trim: true },
   kwCategoryId: { type: Schema.Types.ObjectId, ref: 'KWCategory' },

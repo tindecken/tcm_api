@@ -1,5 +1,6 @@
 { 
     "_id" : ObjectId("5cf4dc13c69eb71a84723dc5"), 
+    "type": "kwcategory",
     "kwFeatures" : [
         ObjectId("5cf4dc2ec69eb71a84723dc6"), 
         ObjectId("5cf4dc94c69eb71a84723dc7")
@@ -14,6 +15,7 @@
 }
 { 
     "_id" : ObjectId("5cf4dcb7c69eb71a84723dc8"), 
+    "type": "kwcategory",
     "kwFeatures" : [
         ObjectId("5cf4dcc8c69eb71a84723dc9"), 
         ObjectId("5cf4dcd0c69eb71a84723dca")
