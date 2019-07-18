@@ -22,7 +22,8 @@ const testCaseSchema = new Schema({
   steps: [{type: Schema.Types.ObjectId, ref: 'Step'}],
   key: {type: Boolean, default: false},
   createdAt: { type: Date },
-  updatedAt: { type: Date }
+  updatedAt: { type: Date },
+  isShowClose: { type: Boolean, default: false}
 });
 
 testCaseSchema.virtual('codeName').get(function () {
