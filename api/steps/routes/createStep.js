@@ -53,7 +53,7 @@ module.exports = {
         const keyword = await Keyword.findOneAndUpdate({ _id: req.payload.keyword}, { $push: { steps: st._id }}).exec()
         if(!keyword)  throw Boom.badRequest(`Not found keyword ${req.payload.keyword} in the system`)
 
-        const client = await Client.findOne({ _id: req.payload.client}).exec()
+        const client = await Client.findOneAndUpdate({ _id: req.payload.client}, { $push: { steps: st._id }}).exec()
         if(!client)  throw Boom.badRequest(`Not found client ${req.payload.client} in the system`)
 
         const step = await st.save()
