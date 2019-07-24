@@ -28,6 +28,7 @@ module.exports = {
         testCase: Joi.objectId().required().description('step belong to what testcase'),
         keyword: Joi.objectId().required().description('this step is reference with keyword'),
         client: Joi.objectId().required().description('this step is running on what client'),
+        params: Joi.array().description('Array of parameter, must be correct with keyword params')
       }),
       failAction: (request, h, err) => {
         throw err;
@@ -69,7 +70,7 @@ module.exports = {
           });
         }else{
           if(st.params.length !== keyword.params.length) throw Boom.badRequest(`Not match parameter length with the keyword ${keyword.name}`)
-          //TODO: check with input param
+          st.params = req.payload.params
         }
 
         const step = await st.save()
