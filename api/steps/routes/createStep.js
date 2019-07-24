@@ -7,6 +7,7 @@ const Step = require('../../models/Step')
 var mongoose = require('mongoose')
 const headerToken = require('../../../config').headerToken
 const TestCase = require('../../models/TestCase')
+const Keyword = require('../../models/Keyword')
 
 module.exports = {
   method: 'POST',
@@ -48,6 +49,9 @@ module.exports = {
         const testcase = await TestCase.findOneAndUpdate({ _id: req.payload.testCase}, { $push: { steps: st._id }}).exec()
         if(!testcase)  throw Boom.badRequest(`Not found testcase ${req.payload.testCase} in the system`)
         
+        const keyword = await Keyword.findOneAndUpdate({ _id: req.payload.keyword}, { $push: { steps: st._id }}).exec()
+        if(!keyword)  throw Boom.badRequest(`Not found keyword ${req.payload.keyword} in the system`)
+
         const step = await st.save()
         return res.response({ step }).code(201);
       }catch(err) {
