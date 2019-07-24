@@ -6,7 +6,7 @@ Joi.objectId = require('joi-objectid')(Joi)
 const Step = require('../../models/Step')
 var mongoose = require('mongoose')
 const headerToken = require('../../../config').headerToken
-
+const TestCase = require('../../models/TestCase')
 
 module.exports = {
   method: 'POST',
@@ -44,6 +44,10 @@ module.exports = {
         st.keyword = req.payload.keyword
         st.client = req.payload.client
         st.createdAt = Date.now()
+        
+        const testcase = await TestCase.findOneAndUpdate({ _id: req.payload.testCase}, { $push: { steps: st._id }}).exec()
+        if(!testcase)  throw Boom.badRequest(`Not found testcase ${req.payload.testCase} in the system`)
+        
         const step = await st.save()
         return res.response({ step }).code(201);
       }catch(err) {

@@ -28,7 +28,7 @@ const validate = async function (decoded, request, h) {
 const init = async () => {
 
   const server = new Hapi.Server({
-    port: 3000, 
+    port: 3000,
     routes: { cors: true }
   });
 
@@ -40,7 +40,7 @@ const init = async () => {
     },
     grouping: 'tags'
   }
-  
+
   await server.register([
     Inert,
     Vision,
@@ -58,7 +58,7 @@ const init = async () => {
   });
 
   server.auth.default('jwt');
-  
+
   // Look through the routes in
   // all the subdirectories of API
   // and create a new route for each
@@ -81,7 +81,8 @@ process.on('unhandledRejection', (err) => {
 
 init().then(server => {
   console.log('Server running at:', server.info.uri);
-  const dbUrl = 'mongodb://tind:1Rivaldo@ds241097.mlab.com:41097/tcm'; 
+  // const dbUrl = 'mongodb://localhost/hapi-app';
+  const dbUrl = 'mongodb://tind:1Rivaldo@ds241097.mlab.com:41097/tcm';
   mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
