@@ -18,10 +18,9 @@ const stepSchema = new Schema({
   order: { type: Number, required: true, default: 1 },
   params: [{
     name: { type: String, trim: true, maxlength: 25, required: true},
-    description: {type: String, required: true},
-    defaultValue: { type: String, maxlength: 255, required: true },
-    value: { type: String, maxlength: 255, required: true },
-    ref_node: { type: String, maxlength: 255, required: true }
+    description: {type: String, default: ''},
+    value: { type: String, maxlength: 255, required: true, default: ''},
+    ref_node: { type: String, maxlength: 255, required: true, default: ''}
   }],
   client: {type: Schema.Types.ObjectId, ref: 'Client'},
   stepLog: {type: Schema.Types.ObjectId, ref: 'StepLog'},

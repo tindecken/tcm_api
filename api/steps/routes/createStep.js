@@ -46,15 +46,31 @@ module.exports = {
         st.keyword = req.payload.keyword
         st.client = req.payload.client
         st.createdAt = Date.now()
+        st.params = []
         
         const testcase = await TestCase.findOneAndUpdate({ _id: req.payload.testCase}, { $push: { steps: st._id }}).exec()
         if(!testcase)  throw Boom.badRequest(`Not found testcase ${req.payload.testCase} in the system`)
         
+        const client = await Client.findOneAndUpdate({ _id: req.payload.client}, { $push: { steps: st._id }}).exec()
+        if(!client)  throw Boom.badRequest(`Not found client ${req.payload.client} in the system`)
+
         const keyword = await Keyword.findOneAndUpdate({ _id: req.payload.keyword}, { $push: { steps: st._id }}).exec()
         if(!keyword)  throw Boom.badRequest(`Not found keyword ${req.payload.keyword} in the system`)
 
-        const client = await Client.findOneAndUpdate({ _id: req.payload.client}, { $push: { steps: st._id }}).exec()
-        if(!client)  throw Boom.badRequest(`Not found client ${req.payload.client} in the system`)
+        if(!req.payload.params){ //user didn't provide params --> set keyword.params = step.params
+          keyword.params.forEach(param => {
+            let pr = {
+              name: param.name,
+              description: param.description,
+              value: param.defaultValue,
+              ref_node: ''
+            }
+            st.params.push(pr)  
+          });
+        }else{
+          if(st.params.length !== keyword.params.length) throw Boom.badRequest(`Not match parameter length with the keyword ${keyword.name}`)
+          //TODO: check with input param
+        }
 
         const step = await st.save()
         return res.response({ step }).code(201);

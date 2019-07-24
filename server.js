@@ -84,6 +84,7 @@ init().then(server => {
   // const dbUrl = 'mongodb://localhost/hapi-app';
   const dbUrl = 'mongodb://tind:1Rivaldo@ds241097.mlab.com:41097/tcm';
   mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
+  mongoose.Schema.Types.String.checkRequired(v => v != null);
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function() {
