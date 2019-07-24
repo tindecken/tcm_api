@@ -1,6 +1,6 @@
 { 
     "_id" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
-    "type": "user",
+    "type" : "user", 
     "admin" : true, 
     "testSuites" : [
         ObjectId("5cf4c3d5f3642152a8d0e0e7"), 
@@ -10,7 +10,9 @@
     ], 
     "categories" : [
         ObjectId("5cf4c238f3642152a8d0e0e5"), 
-        ObjectId("5cf4c24cf3642152a8d0e0e6")
+        ObjectId("5cf4c24cf3642152a8d0e0e6"), 
+        ObjectId("5d259d0c215b315a78b731cf"), 
+        ObjectId("5d25b5674c8d6d6f6091f6f5")
     ], 
     "testCases" : [
         ObjectId("5cfa80e92c05cd32c89ce863"), 

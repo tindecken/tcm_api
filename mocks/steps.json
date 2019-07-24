@@ -1,0 +1,54 @@
+{ 
+    "_id" : ObjectId("5d30204618270c0fb246d79e"), 
+    "type" : "step", 
+    "status" : "NORUN", 
+    "runningTime" : NumberInt(0), 
+    "enabled" : true, 
+    "order" : NumberInt(1), 
+    "params" : [
+
+    ], 
+    "name" : "Go to Home Page", 
+    "description" : "Launch Browser and Go to Home Page", 
+    "testCase" : ObjectId("5cfa80e92c05cd32c89ce863"), 
+    "keyword" : ObjectId("5cf4e7e97286024cfcc5bfd2"), 
+    "client" : ObjectId("5cf4cc7a8ad5ac5850380608"), 
+    "createdAt" : ISODate("2019-07-18T07:31:18.676+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5d30208118270c0fb246d79f"), 
+    "type" : "step", 
+    "status" : "NORUN", 
+    "runningTime" : NumberInt(0), 
+    "enabled" : true, 
+    "order" : NumberInt(1), 
+    "params" : [
+
+    ], 
+    "name" : "Login", 
+    "description" : "Login with username and password", 
+    "testCase" : ObjectId("5cfa80e92c05cd32c89ce863"), 
+    "keyword" : ObjectId("5cf4e8cd7286024cfcc5bfd4"), 
+    "client" : ObjectId("5cf4cc7a8ad5ac5850380608"), 
+    "createdAt" : ISODate("2019-07-18T07:32:17.391+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5d3020a318270c0fb246d7a0"), 
+    "type" : "step", 
+    "status" : "NORUN", 
+    "runningTime" : NumberInt(0), 
+    "enabled" : true, 
+    "order" : NumberInt(1), 
+    "params" : [
+
+    ], 
+    "name" : "Logout", 
+    "description" : "Logout current user", 
+    "testCase" : ObjectId("5cfa80e92c05cd32c89ce863"), 
+    "keyword" : ObjectId("5cf4e9067286024cfcc5bfd9"), 
+    "client" : ObjectId("5cf4cc7a8ad5ac5850380608"), 
+    "createdAt" : ISODate("2019-07-18T07:32:51.051+0000"), 
+    "__v" : NumberInt(0)
+}

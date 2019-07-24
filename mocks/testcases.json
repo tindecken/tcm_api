@@ -1,26 +1,6 @@
 { 
-    "_id" : ObjectId("5cfa80e92c05cd32c89ce863"), 
-    "type": "testcase",
-    "status" : "NORUN", 
-    "runningTime" : NumberInt(0), 
-    "workID" : "", 
-    "enabled" : true, 
-    "primary" : false, 
-    "dependencies" : [
-
-    ], 
-    "steps" : [
-
-    ], 
-    "key" : false, 
-    "name" : "PreConfig_CCD", 
-    "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
-    "createdAt" : ISODate("2019-06-07T15:21:13.708+0000"), 
-    "__v" : NumberInt(0)
-}
-{ 
     "_id" : ObjectId("5cfa81072c05cd32c89ce864"), 
-    "type": "testcase",
+    "type" : "testcase", 
     "status" : "NORUN", 
     "runningTime" : NumberInt(0), 
     "workID" : "", 
@@ -36,11 +16,12 @@
     "name" : "PreConfig_CTX", 
     "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
     "createdAt" : ISODate("2019-06-07T15:21:43.654+0000"), 
+    "isShowClose" : false, 
     "__v" : NumberInt(0)
 }
 { 
     "_id" : ObjectId("5cfa8185c5bf4b1334026e6c"), 
-    "type": "testcase",
+    "type" : "testcase", 
     "status" : "NORUN", 
     "runningTime" : NumberInt(0), 
     "workID" : "", 
@@ -56,11 +37,12 @@
     "name" : "TC_CCD_FHR_001: Verify Record Type Code of File Header Record Priority", 
     "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
     "createdAt" : ISODate("2019-06-07T15:23:49.264+0000"), 
+    "isShowClose" : false, 
     "__v" : NumberInt(0)
 }
 { 
     "_id" : ObjectId("5cfa819ec5bf4b1334026e6d"), 
-    "type": "testcase",
+    "type" : "testcase", 
     "status" : "NORUN", 
     "runningTime" : NumberInt(0), 
     "workID" : "", 
@@ -76,11 +58,12 @@
     "name" : "TC_CCD_FHR_002: Verify Immediate Destination in ACH - CCD File", 
     "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
     "createdAt" : ISODate("2019-06-07T15:24:14.597+0000"), 
+    "isShowClose" : false, 
     "__v" : NumberInt(0)
 }
 { 
     "_id" : ObjectId("5cfa88ca7b137a2dbc586fbc"), 
-    "type": "testcase",
+    "type" : "testcase", 
     "status" : "NORUN", 
     "runningTime" : NumberInt(0), 
     "workID" : "", 
@@ -96,71 +79,12 @@
     "name" : "Preconfig: Update Pay4ULimit = 0.00 - Create Bank - Import Vendors - Enroll", 
     "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
     "createdAt" : ISODate("2019-06-07T15:54:50.881+0000"), 
-    "__v" : NumberInt(0)
-}
-{ 
-    "_id" : ObjectId("5cfa89107b137a2dbc586fc0"), 
-    "type": "testcase",
-    "status" : "NORUN", 
-    "runningTime" : NumberInt(0), 
-    "workID" : "", 
-    "enabled" : true, 
-    "primary" : false, 
-    "dependencies" : [
-
-    ], 
-    "steps" : [
-
-    ], 
-    "key" : false, 
-    "name" : "Payment Comment Preconfig", 
-    "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
-    "createdAt" : ISODate("2019-06-07T15:56:00.440+0000"), 
-    "__v" : NumberInt(0)
-}
-{ 
-    "_id" : ObjectId("5cfa89227b137a2dbc586fc1"), 
-    "type": "testcase",
-    "status" : "NORUN", 
-    "runningTime" : NumberInt(0), 
-    "workID" : "", 
-    "enabled" : true, 
-    "primary" : false, 
-    "dependencies" : [
-
-    ], 
-    "steps" : [
-
-    ], 
-    "key" : false, 
-    "name" : "Comment_1_1: Comment Alert is on", 
-    "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
-    "createdAt" : ISODate("2019-06-07T15:56:18.842+0000"), 
-    "__v" : NumberInt(0)
-}
-{ 
-    "_id" : ObjectId("5cfa89297b137a2dbc586fc2"), 
-    "type": "testcase",
-    "status" : "NORUN", 
-    "runningTime" : NumberInt(0), 
-    "workID" : "", 
-    "enabled" : true, 
-    "primary" : false, 
-    "dependencies" : [
-
-    ], 
-    "steps" : [
-
-    ], 
-    "key" : false, 
-    "name" : "Comment_1_2: Comment Alert is off", 
-    "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
-    "createdAt" : ISODate("2019-06-07T15:56:25.488+0000"), 
+    "isShowClose" : false, 
     "__v" : NumberInt(0)
 }
 { 
     "_id" : ObjectId("5cfa893b7b137a2dbc586fc3"), 
-    "type": "testcase",
+    "type" : "testcase", 
     "status" : "NORUN", 
     "runningTime" : NumberInt(0), 
     "workID" : "", 
@@ -176,5 +100,92 @@
     "name" : "Comment_1_3: Comment without mention to user", 
     "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
     "createdAt" : ISODate("2019-06-07T15:56:43.984+0000"), 
+    "isShowClose" : false, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cfa89107b137a2dbc586fc0"), 
+    "type" : "testcase", 
+    "status" : "NORUN", 
+    "runningTime" : NumberInt(0), 
+    "workID" : "", 
+    "enabled" : true, 
+    "primary" : false, 
+    "dependencies" : [
+
+    ], 
+    "steps" : [
+
+    ], 
+    "key" : false, 
+    "name" : "Payment Comment Preconfig", 
+    "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
+    "createdAt" : ISODate("2019-06-07T15:56:00.440+0000"), 
+    "isShowClose" : false, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cfa89227b137a2dbc586fc1"), 
+    "type" : "testcase", 
+    "status" : "NORUN", 
+    "runningTime" : NumberInt(0), 
+    "workID" : "", 
+    "enabled" : true, 
+    "primary" : false, 
+    "dependencies" : [
+
+    ], 
+    "steps" : [
+
+    ], 
+    "key" : false, 
+    "name" : "Comment_1_1: Comment Alert is on", 
+    "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
+    "createdAt" : ISODate("2019-06-07T15:56:18.842+0000"), 
+    "isShowClose" : false, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cfa89297b137a2dbc586fc2"), 
+    "type" : "testcase", 
+    "status" : "NORUN", 
+    "runningTime" : NumberInt(0), 
+    "workID" : "", 
+    "enabled" : true, 
+    "primary" : false, 
+    "dependencies" : [
+
+    ], 
+    "steps" : [
+
+    ], 
+    "key" : false, 
+    "name" : "Comment_1_2: Comment Alert is off", 
+    "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
+    "createdAt" : ISODate("2019-06-07T15:56:25.488+0000"), 
+    "isShowClose" : false, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cfa80e92c05cd32c89ce863"), 
+    "type" : "testcase", 
+    "status" : "NORUN", 
+    "runningTime" : NumberInt(0), 
+    "workID" : "", 
+    "enabled" : true, 
+    "primary" : false, 
+    "dependencies" : [
+
+    ], 
+    "steps" : [
+        ObjectId("5d37e3f4a9e6de161f5d6ae1"), 
+        ObjectId("5d37e412a9e6de161f5d6ae2"), 
+        ObjectId("5d37e41aa9e6de161f5d6ae3")
+    ], 
+    "key" : false, 
+    "name" : "PreConfig_CCD", 
+    "owner" : ObjectId("5cf4c21df3642152a8d0e0e4"), 
+    "createdAt" : ISODate("2019-06-07T15:21:13.708+0000"), 
+    "isShowClose" : false, 
     "__v" : NumberInt(0)
 }

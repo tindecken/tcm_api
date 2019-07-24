@@ -1,6 +1,6 @@
 { 
     "_id" : ObjectId("5cfa7f842c05cd32c89ce85c"), 
-    "type": "testgroup",
+    "type" : "testgroup", 
     "status" : "NORUN", 
     "enabled" : true, 
     "runningTime" : NumberInt(0), 
@@ -15,8 +15,8 @@
     "__v" : NumberInt(0)
 }
 { 
-    "_id" : ObjectId("5cfa7fa12c05cd32c89ce85d"),
-    "type": "testgroup",
+    "_id" : ObjectId("5cfa7fa12c05cd32c89ce85d"), 
+    "type" : "testgroup", 
     "status" : "NORUN", 
     "enabled" : true, 
     "runningTime" : NumberInt(0), 
@@ -30,8 +30,8 @@
     "__v" : NumberInt(0)
 }
 { 
-    "_id" : ObjectId("5cfa80082c05cd32c89ce85e"),
-    "type": "testgroup",
+    "_id" : ObjectId("5cfa80082c05cd32c89ce85e"), 
+    "type" : "testgroup", 
     "status" : "NORUN", 
     "enabled" : true, 
     "runningTime" : NumberInt(0), 
@@ -45,8 +45,8 @@
     "__v" : NumberInt(0)
 }
 { 
-    "_id" : ObjectId("5cfa804c2c05cd32c89ce85f"),
-    "type": "testgroup",
+    "_id" : ObjectId("5cfa804c2c05cd32c89ce85f"), 
+    "type" : "testgroup", 
     "status" : "NORUN", 
     "enabled" : true, 
     "runningTime" : NumberInt(0), 
@@ -60,8 +60,8 @@
     "__v" : NumberInt(0)
 }
 { 
-    "_id" : ObjectId("5cfa80662c05cd32c89ce860"),
-    "type": "testgroup",
+    "_id" : ObjectId("5cfa80662c05cd32c89ce860"), 
+    "type" : "testgroup", 
     "status" : "NORUN", 
     "enabled" : true, 
     "runningTime" : NumberInt(0), 
@@ -75,8 +75,8 @@
     "__v" : NumberInt(0)
 }
 { 
-    "_id" : ObjectId("5cfa80782c05cd32c89ce861"),
-    "type": "testgroup",
+    "_id" : ObjectId("5cfa80782c05cd32c89ce861"), 
+    "type" : "testgroup", 
     "status" : "NORUN", 
     "enabled" : true, 
     "runningTime" : NumberInt(0), 
@@ -90,8 +90,8 @@
     "__v" : NumberInt(0)
 }
 { 
-    "_id" : ObjectId("5cfa88e57b137a2dbc586fbd"),
-    "type": "testgroup",
+    "_id" : ObjectId("5cfa88e57b137a2dbc586fbd"), 
+    "type" : "testgroup", 
     "status" : "NORUN", 
     "enabled" : true, 
     "runningTime" : NumberInt(0), 
@@ -105,8 +105,8 @@
     "__v" : NumberInt(0)
 }
 { 
-    "_id" : ObjectId("5cfa88ef7b137a2dbc586fbe"),
-    "type": "testgroup",
+    "_id" : ObjectId("5cfa88ef7b137a2dbc586fbe"), 
+    "type" : "testgroup", 
     "status" : "NORUN", 
     "enabled" : true, 
     "runningTime" : NumberInt(0), 

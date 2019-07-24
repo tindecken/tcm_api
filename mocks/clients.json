@@ -23,7 +23,10 @@
 { 
     "_id" : ObjectId("5cf4cdbb8ad5ac585038060a"), 
     "steps" : [
-
+        ObjectId("5d38125ce524271c588fe34b"), 
+        ObjectId("5d38150a1c6c573b38a5229e"), 
+        ObjectId("5d38153a99b10635d021bac4"), 
+        ObjectId("5d3816e56806c405ecd8f853")
     ], 
     "name" : "Azure Storage", 
     "description" : "None", 
