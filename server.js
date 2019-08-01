@@ -1,6 +1,7 @@
 'use strict';
 
 const Hapi = require('hapi');
+var corsHeaders = require('hapi-cors-headers')
 const Boom = require('boom');
 var mongoose = require('mongoose');
 const hapiAuthJWT = require('./api/lib/');
@@ -31,6 +32,8 @@ const init = async () => {
     port: 3000,
     routes: { cors: true }
   });
+
+  server.ext('onPreResponse', corsHeaders)
 
   const swaggerOptions = {
     info: {

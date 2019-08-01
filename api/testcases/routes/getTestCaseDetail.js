@@ -30,7 +30,7 @@ module.exports = {
     handler: async (req, res) => {
       try{
         const tc_id = req.params.id;
-        const testcase = await TestCase.findById(tc_id).populate('steps').exec()
+        const testcase = await TestCase.findById(tc_id).populate({path: 'steps', populate: {path: 'keyword client'}}).exec()
         if(!testcase) throw Boom.notFound("Not found testcase")
         else return res.response(testcase).code(200)
       }catch(err){

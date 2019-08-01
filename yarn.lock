@@ -235,6 +235,11 @@ hapi-auth-jwt2@^8.4.0:
     cookie "^0.3.1"
     jsonwebtoken "^8.1.0"
 
+hapi-cors-headers@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/hapi-cors-headers/-/hapi-cors-headers-1.0.3.tgz#856b0a9870f435249492c5a52d2744317a8cc1fd"
+  integrity sha512-U/y+kpVLUJ0y86fEk8yleou9C1T5wFopcWQjuxKdMXzCcymTjfSqGz59waqvngUs1SbeXav/y8Ga9C0G0L1MGg==
+
 hapi-swagger@^9.4.2:
   version "9.4.2"
   resolved "https://registry.yarnpkg.com/hapi-swagger/-/hapi-swagger-9.4.2.tgz#90e46ef7dc3da7de66ab8a02709722110d4439f3"
