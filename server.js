@@ -1,7 +1,6 @@
 'use strict';
 
 const Hapi = require('hapi');
-var corsHeaders = require('hapi-cors-headers')
 const Boom = require('boom');
 var mongoose = require('mongoose');
 const hapiAuthJWT = require('./api/lib/');
@@ -32,8 +31,6 @@ const init = async () => {
     port: 3000,
     routes: { cors: true }
   });
-
-  server.ext('onPreResponse', corsHeaders)
 
   const swaggerOptions = {
     info: {
@@ -86,7 +83,7 @@ init().then(server => {
   console.log('Server running at:', server.info.uri);
   // const dbUrl = 'mongodb://localhost/hapi-app';
   const dbUrl = 'mongodb://tind:1Rivaldo@ds241097.mlab.com:41097/tcm';
-  mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
+  mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true });
   mongoose.Schema.Types.String.checkRequired(v => v != null);
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
