@@ -29,8 +29,8 @@ module.exports = {
       try{
         const categories = await Category.find().populate({path: 'testSuites', populate: {path: 'testGroups testCases', populate: {path: 'testCases'}}}).exec()
         if(!categories) throw Boom.notFound("Not found categories")
-        const processedCat = transfer(categories)
-        return res.response(processedCat).code(200)
+        // const processedCat = transfer(categories)
+        return res.response(categories).code(200)
       }catch(err){
         return Boom.boomify(err, {
           statusCode: 512,
