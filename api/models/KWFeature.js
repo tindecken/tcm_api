@@ -10,7 +10,7 @@ const kwFeatureSchema = new Schema({
   type: { type: String, default: "kwfeature"},
   name: { type: String, required: true, index: { unique: true }, minlength: 3, maxlength: 50, trim: true},
   description: { type: String, trim: true },
-  kwCategoryId: { type: Schema.Types.ObjectId, ref: 'KWCategory' },
+  kwCategory: { type: Schema.Types.ObjectId, ref: 'KWCategory' },
   keywords: [{ type: Schema.Types.ObjectId, ref: 'Keyword' }],
   createdAt: { type: Date },
   updatedAt: { type: Date }
