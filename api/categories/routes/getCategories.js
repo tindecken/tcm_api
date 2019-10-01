@@ -30,8 +30,13 @@ module.exports = {
           return res.response(categories).code(200)
         })
         .catch(err => {
-          throw Boom.badRequest(err);
+          return Boom.boomify(err, {
+            statusCode: 512,
+            message: err.errmsg,
+            override: false
+          })
         })
+      
     },
   }
 };
