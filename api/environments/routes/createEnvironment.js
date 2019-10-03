@@ -48,7 +48,7 @@ module.exports = {
         env.createdAt = Date.now()
         const environment = await env.save()
         console.log(environment)
-        return res.response({ environment }).code(201);
+        return res.response( environment ).code(201);
       }catch(err) {
         return Boom.boomify(err, {
           statusCode: 512,

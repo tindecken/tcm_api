@@ -42,7 +42,7 @@ module.exports = {
         kwCat.description = req.payload.description
         kwCat.createdAt = Date.now()
         const kwCategory = await kwCat.save()
-        return res.response({ kwCategory }).code(201);
+        return res.response( kwCategory ).code(201);
       }catch(err) {
         return Boom.boomify(err, {
           statusCode: 512,

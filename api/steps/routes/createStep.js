@@ -74,7 +74,7 @@ module.exports = {
         }
 
         const step = await st.save()
-        return res.response({ step }).code(201);
+        return res.response( step ).code(201);
       }catch(err) {
         return Boom.boomify(err, {
           statusCode: 512,

@@ -45,7 +45,7 @@ module.exports = {
         cli.path = req.payload.path
         cli.createdAt = Date.now()
         const client = await cli.save()
-        return res.response({ client }).code(201);
+        return res.response( client ).code(201);
       }catch(err) {
         return Boom.boomify(err, {
           statusCode: 512,

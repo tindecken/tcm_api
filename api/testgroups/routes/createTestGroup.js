@@ -56,7 +56,7 @@ module.exports = {
         const ts = await TestSuite.findOneAndUpdate({ _id: req.payload.testSuiteId}, { $push: { testGroups: testGroup._id }}).exec()
         if(!ts) throw Boom.badRequest('Not found testsuite in the system')
         const testgroup = await testGroup.save()
-        return res.response({ testgroup }).code(201);
+        return res.response( testgroup ).code(201);
       }catch(error) {
         throw Boom.boomify(error)
       }

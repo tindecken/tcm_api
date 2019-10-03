@@ -48,7 +48,7 @@ module.exports = {
         const user = await User.findOneAndUpdate({ _id: req.pre.userID}, { $push: { categories: cat._id }}).exec()
         if(!user)  throw Boom.badRequest('Not found user in the system')
         const category = await cat.save()
-        return res.response({ category }).code(201);
+        return res.response( category ).code(201);
       }catch(err) {
         return Boom.boomify(err, {
           statusCode: 512,

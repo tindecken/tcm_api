@@ -57,7 +57,7 @@ module.exports = {
         let kwFeature = await KWFeature.findByIdAndUpdate(kw.kwFeatureId, { $push: {keywords: kw._id}}).exec()
         if(!kwFeature) throw Boom.badRequest(`Not found keyword feature with id ${kw.kwFeatureId}`)
         let user = await User.findOneAndUpdate({ name: req.pre.owner}, { $push: { keywords: kw._id }}).exec()
-        return res.response({ keyword }).code(201);
+        return res.response( keyword ).code(201);
       }catch(err) {
         return Boom.boomify(err, {
           statusCode: 512,

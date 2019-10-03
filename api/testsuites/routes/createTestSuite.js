@@ -60,7 +60,7 @@ module.exports = {
         const cat = await Category.findOneAndUpdate({ _id: req.payload.categoryId}, { $push: { testSuites: testSuite._id }}).exec()
         if(!cat) throw Boom.badRequest('Not found category in the system')
         const testsuite = await testSuite.save()
-        return res.response({ testsuite }).code(201);
+        return res.response(testsuite).code(201);
       }catch(err) {
         return Boom.boomify(err, {
           statusCode: 512,

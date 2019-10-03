@@ -93,7 +93,7 @@ module.exports = {
           if(!tg) throw Boom.badRequest('Not found testgroup in the system')
         }
         const testCaseSaved = await testCase.save()
-        return res.response({ testCaseSaved }).code(201);
+        return res.response( testCaseSaved ).code(201);
       }catch(error) {
         throw Boom.boomify(error)
       }
